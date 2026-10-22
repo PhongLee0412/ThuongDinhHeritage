@@ -166,8 +166,8 @@
     <section id="section-studio" class="scroll-mt-20">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-start">
 
-        <!-- LEFT 7 COLS: STICKY 3D VIEWPORT CARD (CLEAN, NON-OVERLAPPING BARS) -->
-        <div class="md:col-span-7 md:sticky md:top-20 rounded-2xl border border-zinc-200/90 bg-white overflow-hidden shadow-xs">
+        <!-- LEFT 7 COLS: STICKY 3D VIEWPORT CARD (CLEAN, NON-OVERLAPPING BARS, MATCHED HEIGHT) -->
+        <div class="md:col-span-7 md:sticky md:top-20 md:h-[596px] flex flex-col justify-between rounded-2xl border border-zinc-200/90 bg-white overflow-hidden shadow-xs">
 
           <!-- 1A. Stage Top Toolbar (Separated from Canvas so it never covers the 3D shoe) -->
           <div class="px-4 py-2.5 bg-white border-b border-zinc-100 flex flex-wrap items-center justify-between gap-2">
@@ -206,7 +206,7 @@
           </div>
 
           <!-- 1B. Center 3D WebGL Canvas (Pure, Unobstructed Product Stage) -->
-          <div class="relative w-full h-[360px] sm:h-[430px] stage-surface select-none overflow-hidden" id="threeViewportWrapper">
+          <div class="relative w-full h-[380px] md:h-auto md:flex-1 stage-surface select-none overflow-hidden" id="threeViewportWrapper">
             <canvas id="threeCanvas" class="w-full h-full block cursor-grab active:cursor-grabbing relative z-10"></canvas>
             <canvas id="blueprint2DCanvas" width="1080" height="660" class="hidden absolute inset-0 w-full h-full object-contain z-20 bg-[#F5F5F3]"></canvas>
             <!-- External 2D Concept Board Preview Layer (When user uploads a full 2D design board) -->
@@ -241,6 +241,7 @@
               <button type="button" data-cam="side" class="cam-angle-btn whitespace-nowrap px-2.5 py-1 rounded-full text-[11px] font-semibold bg-zinc-900 text-white transition">Góc Nghiêng<span class="sr-only"> Sọc</span></button>
               <button type="button" data-cam="quarter" class="cam-angle-btn whitespace-nowrap px-2.5 py-1 rounded-full text-[11px] font-medium text-zinc-600 hover:text-zinc-900 transition">Góc 3/4<span class="sr-only"> Lookbook</span></button>
               <button type="button" data-cam="front" class="cam-angle-btn whitespace-nowrap px-2.5 py-1 rounded-full text-[11px] font-medium text-zinc-600 hover:text-zinc-900 transition">Tem Lưỡi Gà<span class="sr-only"> &amp; Dây</span></button>
+              <button type="button" data-cam="heel" class="cam-angle-btn whitespace-nowrap px-2.5 py-1 rounded-full text-[11px] font-medium text-zinc-600 hover:text-zinc-900 transition">Gót Sau</button>
               <button type="button" data-cam="sole" class="cam-angle-btn whitespace-nowrap px-2.5 py-1 rounded-full text-[11px] font-medium text-zinc-600 hover:text-zinc-900 transition">Đế Kếp<span class="sr-only"> &amp; Gót</span></button>
               <button type="button" data-cam="top" class="cam-angle-btn whitespace-nowrap px-2.5 py-1 rounded-full text-[11px] font-medium text-zinc-600 hover:text-zinc-900 transition">Toàn Cảnh 360°</button>
             </div>
@@ -262,103 +263,88 @@
               <span class="sr-only">0. Blank 3D Mockup (</span>Khung Trắng<span class="sr-only">)</span>
             </button>
             <button type="button" data-preset="gachbong" class="preset-pill-btn shrink-0 px-2.5 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-medium transition">
-              <span class="sr-only">1. </span>Gạch Bông Nam Bộ
-            </button>
-            <button type="button" data-preset="saigon" class="preset-pill-btn shrink-0 px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 text-[11px] font-medium transition">
-              <span class="sr-only">2. </span>Biển Hiệu Sài Gòn Xưa
+              <span class="sr-only">1. Gạch Bông Nam Bộ </span>Vệt Sơn Công Xưởng
             </button>
             <button type="button" data-preset="gomsu" class="preset-pill-btn shrink-0 px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 text-[11px] font-medium transition">
-              <span class="sr-only">3. </span>Gốm Sứ &amp; Mây Rồng Cổ
+              <span class="sr-only">3. Gốm Sứ &amp; Mây Rồng Cổ </span>Vết Keo Lưu Hóa
             </button>
-            <button type="button" data-preset="dongho" class="preset-pill-btn shrink-0 px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 text-[11px] font-medium transition">
-              <span class="sr-only">4. </span>Tranh Dân Gian Đông Hồ
+            <button type="button" data-preset="saigon" class="preset-pill-btn shrink-0 px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 text-[11px] font-medium transition">
+              <span class="sr-only">2. Biển Hiệu Sài Gòn Xưa </span>Biển Hiệu Vẽ Tay Vỉa Hè
             </button>
             <button type="button" data-preset="graffiti" class="preset-pill-btn shrink-0 px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 text-[11px] font-medium transition">
-              <span class="sr-only">5. </span>Graffiti Đường Phố Y2K
+              <span class="sr-only">5. Graffiti Đường Phố Y2K </span>Xịt Sơn Graffiti Thô Ráp
+            </button>
+            <button type="button" data-preset="dongho" class="preset-pill-btn shrink-0 px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 text-[11px] font-medium transition">
+              <span class="sr-only">4. Tranh Dân Gian Đông Hồ </span>Bạt Dứa &amp; Dấu KCS
             </button>
           </div>
         </div>
 
-        <!-- RIGHT 5 COLS: PRODUCT CONFIGURATOR PANEL (LOGICAL PDP HIERARCHY) -->
-        <div class="md:col-span-5 rounded-2xl border border-zinc-200/90 bg-white p-5 sm:p-6 flex flex-col justify-between space-y-6 shadow-xs">
+        <!-- RIGHT 5 COLS: PRODUCT CONFIGURATOR PANEL (STABLE FIXED-HEIGHT CARD, CLEAN HIERARCHY) -->
+        <div class="md:col-span-5 md:h-[596px] rounded-2xl border border-zinc-200/90 bg-white flex flex-col justify-between overflow-hidden shadow-xs">
 
-          <div class="space-y-5">
-            <!-- 1. Product Header & Price (Placed logically at the top of the right panel!) -->
-            <div class="flex items-start justify-between gap-3 border-b border-zinc-100 pb-4">
+          <!-- 1. FIXED PANEL HEADER (Compact Title, Price & Single Upload Trigger) -->
+          <div class="px-5 pt-4 pb-3.5 border-b border-zinc-100 bg-white shrink-0 space-y-2.5">
+            <div class="flex items-start justify-between gap-3">
               <div class="min-w-0">
                 <div class="flex items-center gap-1.5 text-[11px] font-medium text-zinc-400">
                   <span class="w-1.5 h-1.5 rounded-full bg-[#B91C1C]"></span>
-                  <span>Thượng Đình TD1957 · Custom By You</span>
+                  <span>Thượng Đình TD1957 · Custom Studio</span>
+                  <span>·</span>
+                  <span class="font-bold text-zinc-900">650.000₫</span>
                 </div>
-                <h1 id="liveDesignNameBadge" class="text-lg sm:text-xl font-bold text-zinc-900 tracking-tight truncate mt-0.5">
+                <h1 id="liveDesignNameBadge" class="text-base sm:text-lg font-bold text-zinc-900 tracking-tight truncate mt-0.5">
                   Sài Gòn Nhịp Đập 1957
                 </h1>
-                <div class="flex items-center gap-2 text-xs text-zinc-500 mt-1">
-                  <span id="livePatternBadge" class="font-medium text-[#B91C1C]">Gạch Bông Nam Bộ</span>
-                  <span>·</span>
-                  <span id="liveSignatureBadge" class="font-mono text-[11px]">Tem: "KẺ NÉT TỰ DO"</span>
-                </div>
               </div>
 
-              <!-- Price & Mini Pattern Swatch -->
-              <div class="flex flex-col items-end shrink-0">
-                <div class="flex items-center gap-2">
-                  <span class="text-lg font-bold text-zinc-900">650.000₫</span>
-                  <button id="resetDefaultPanelBtn" type="button" class="sr-only" tabindex="-1" aria-hidden="true">↺ Reset</button>
-                </div>
-                <div class="flex items-center gap-1.5 mt-1">
-                  <canvas id="stripePreviewMiniCanvas" width="24" height="24" class="w-4 h-4 rounded-xs border border-zinc-300"></canvas>
-                  <span id="miniSwatchLabel" class="text-[10px] text-zinc-400">Gạch Bông Nam Bộ</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- External Design Upload Box (For users who design in Photoshop/AI/Procreate/Canva) -->
-            <div class="p-3 rounded-xl bg-[#FAF8F5] border border-zinc-200/90 space-y-2.5">
-              <div class="flex items-center justify-between gap-2">
-                <div class="min-w-0">
-                  <div class="text-xs font-semibold text-zinc-900 flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-[#171C8F]"></span>
-                    <span>Thiết kế bên ngoài (Upload File)</span>
-                  </div>
-                  <p class="text-[11px] text-zinc-500 truncate">Tải ảnh (.PNG, .JPG) để ốp lên sọc 3D hoặc nộp bản vẽ riêng</p>
-                </div>
-                <label for="externalDesignFileInput" class="cursor-pointer shrink-0 px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-[#171C8F] text-white text-xs font-semibold transition whitespace-nowrap">
-                  ⬆ Chọn Ảnh...
+              <!-- Single Clean Upload Button (Integrated into Header so it doesn't clutter the body) -->
+              <div class="flex items-center gap-1.5 shrink-0">
+                <button id="resetDefaultPanelBtn" type="button" class="sr-only" tabindex="-1" aria-hidden="true">↺ Reset</button>
+                <label for="externalDesignFileInput" title="Tải ảnh thiết kế riêng từ máy (.PNG, .JPG)" class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-100 hover:bg-[#171C8F] text-zinc-800 hover:text-white text-xs font-semibold transition whitespace-nowrap">
+                  <span>⬆ Chọn Ảnh...</span>
                 </label>
                 <input id="externalDesignFileInput" type="file" accept="image/*" class="sr-only" />
               </div>
+            </div>
 
-              <!-- Active Uploaded File Controls (Shown when user uploads an image) -->
-              <div id="uploadedDesignControlBar" class="hidden pt-2 border-t border-zinc-200/80 space-y-2">
-                <div class="flex items-center justify-between gap-2">
-                  <div class="flex items-center gap-2 min-w-0">
-                    <img id="uploadedDesignThumb" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Uploaded preview" class="w-8 h-8 rounded border border-zinc-300 object-cover shrink-0 bg-white" />
-                    <div class="min-w-0">
-                      <div id="uploadedDesignFileName" class="text-xs font-semibold text-zinc-800 truncate">custom_design.png</div>
-                      <div class="text-[10px] text-emerald-700 font-medium">Đã nạp vào Studio</div>
-                    </div>
+            <!-- Compact Live Status Sub-bar -->
+            <div class="flex items-center justify-between gap-2 text-[11px] text-zinc-500">
+              <div class="flex items-center gap-1.5 min-w-0 truncate">
+                <canvas id="stripePreviewMiniCanvas" width="24" height="24" class="w-3.5 h-3.5 rounded-xs border border-zinc-300 shrink-0"></canvas>
+                <span id="livePatternBadge" class="font-semibold text-[#B91C1C] truncate">Vệt Sơn Công Xưởng</span>
+                <span id="miniSwatchLabel" class="sr-only">Gạch Bông Nam Bộ</span>
+              </div>
+              <span id="liveSignatureBadge" class="font-mono text-[11px] text-zinc-500 shrink-0">Tem: "CHẮC BƯỚC CHẤT THẬT"</span>
+            </div>
+
+            <!-- Active Uploaded File Controls (Hidden by default; expands neatly only when a file is uploaded) -->
+            <div id="uploadedDesignControlBar" class="hidden pt-2 border-t border-zinc-100 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2 min-w-0">
+                  <img id="uploadedDesignThumb" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Uploaded preview" class="w-7 h-7 rounded border border-zinc-300 object-cover shrink-0 bg-white" />
+                  <div class="min-w-0">
+                    <div id="uploadedDesignFileName" class="text-xs font-semibold text-zinc-800 truncate">custom_design.png</div>
                   </div>
-                  <button id="clearUploadedDesignBtn" type="button" class="px-2 py-1 rounded bg-zinc-200/80 hover:bg-red-100 hover:text-[#B91C1C] text-[11px] font-medium text-zinc-700 transition shrink-0">
-                    ✕ Gỡ ảnh
-                  </button>
                 </div>
-
-                <div class="grid grid-cols-3 gap-1 bg-zinc-200/60 p-1 rounded-lg">
-                  <button type="button" data-upload-mode="stripe" class="upload-mode-btn py-1 px-1.5 rounded-md text-[11px] font-semibold bg-white text-zinc-900 shadow-2xs truncate">
-                    Ốp vào Sọc 3D
-                  </button>
-                  <button type="button" data-upload-mode="upper" class="upload-mode-btn py-1 px-1.5 rounded-md text-[11px] font-medium text-zinc-600 hover:text-zinc-900 truncate">
-                    Ốp Thân Giày
-                  </button>
-                  <button type="button" data-upload-mode="board" class="upload-mode-btn py-1 px-1.5 rounded-md text-[11px] font-medium text-zinc-600 hover:text-zinc-900 truncate">
-                    Bản Vẽ 2D Riêng
-                  </button>
-                </div>
+                <button id="clearUploadedDesignBtn" type="button" class="px-2 py-0.5 rounded bg-zinc-100 hover:bg-red-50 hover:text-[#B91C1C] text-[11px] font-medium text-zinc-600 transition shrink-0">
+                  ✕ Gỡ ảnh
+                </button>
+              </div>
+              <div class="grid grid-cols-3 gap-1 bg-zinc-100 p-1 rounded-lg">
+                <button type="button" data-upload-mode="stripe" class="upload-mode-btn py-1 px-1.5 rounded-md text-[11px] font-semibold bg-white text-zinc-900 shadow-2xs truncate">
+                  Ốp vào Sọc 3D
+                </button>
+                <button type="button" data-upload-mode="upper" class="upload-mode-btn py-1 px-1.5 rounded-md text-[11px] font-medium text-zinc-600 hover:text-zinc-900 truncate">
+                  Ốp Thân Giày
+                </button>
+                <button type="button" data-upload-mode="board" class="upload-mode-btn py-1 px-1.5 rounded-md text-[11px] font-medium text-zinc-600 hover:text-zinc-900 truncate">
+                  Bản Vẽ 2D Riêng
+                </button>
               </div>
             </div>
 
-            <!-- 2. Equal-Height Single-Line Zone Stepper Tabs (Never wraps unevenly) -->
+            <!-- 2. EQUAL-WIDTH SINGLE-LINE ZONE TABS -->
             <div class="grid grid-cols-3 gap-1 bg-zinc-100 p-1 rounded-xl">
               <button type="button" data-zone-tab="zone1" class="zone-tab-btn py-2 px-2 rounded-lg text-xs font-semibold bg-white text-zinc-900 shadow-2xs text-center whitespace-nowrap truncate transition">
                 <span class="sr-only">VÙNG 1</span><span>Hai Vạch Sọc Di Sản</span>
@@ -370,135 +356,170 @@
                 <span class="sr-only">VÙNG 3</span><span>Dây &amp; Tem Lưỡi Gà</span>
               </button>
             </div>
+          </div>
+
+          <!-- 3. SCROLLABLE CONFIGURATOR BODY (Fixed height container = zero layout jump!) -->
+          <div class="flex-1 overflow-y-auto px-5 py-4 custom-scrollbar">
 
             <!-- ZONE 1 CONTROLS: HAI VẠCH SỌC DI SẢN -->
-            <div id="panel-zone1" class="space-y-4">
-              <!-- Selectable 2 Authentic Thượng Đình Stripe Versions -->
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-xs font-semibold text-zinc-700">Phiên bản sọc Thượng Đình</span>
-                  <span class="text-[11px] text-[#171C8F] font-medium">2 kiểu sọc nguyên bản</span>
+            <div id="panel-zone1" class="space-y-3.5">
+              <!-- Card 1A: 2 Stripe Versions -->
+              <div class="p-3 rounded-xl bg-zinc-50/80 border border-zinc-200/70 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-500">Kiểu sọc Thượng Đình</span>
+                  <span class="text-[11px] text-[#171C8F] font-semibold">2 phiên bản gốc</span>
                 </div>
                 <div class="grid grid-cols-2 gap-2">
-                  <button type="button" data-stripe-version="v1_cross" class="stripe-version-btn p-2.5 rounded-xl border border-zinc-900 bg-zinc-50 ring-1 ring-zinc-900 text-left transition flex items-center gap-2.5">
-                    <svg class="w-9 h-7 shrink-0 rounded bg-white border border-zinc-200 p-0.5" viewBox="0 0 56 36" fill="none">
-                      <!-- Version 1: Sweeping curve from heel across 2 slanted bars (Bata trắng sọc xanh) -->
+                  <button type="button" data-stripe-version="v1_cross" class="stripe-version-btn p-2 rounded-xl border border-zinc-900 bg-white ring-1 ring-zinc-900 text-left transition flex items-center gap-2">
+                    <svg class="w-8 h-6 shrink-0 rounded bg-zinc-50 border border-zinc-200 p-0.5" viewBox="0 0 56 36" fill="none">
                       <path d="M5 10C18 19 34 24 50 28" stroke="#171C8F" stroke-width="4" stroke-linecap="round"/>
                       <path d="M23 6L31 31" stroke="#171C8F" stroke-width="4" stroke-linecap="round"/>
                       <path d="M34 8L42 31" stroke="#171C8F" stroke-width="4" stroke-linecap="round"/>
                     </svg>
                     <div class="min-w-0">
-                      <div class="text-xs font-semibold text-zinc-900 truncate">Bản 1 · Sọc Đan Chéo</div>
-                      <div class="text-[10px] text-zinc-500 truncate">Bata trắng sọc xanh cổ điển</div>
+                      <div class="text-xs font-semibold text-zinc-900 truncate">Bản 1 · Đan Chéo</div>
+                      <div class="text-[10px] text-zinc-500 truncate">Bata trắng sọc xanh</div>
                     </div>
                   </button>
 
-                  <button type="button" data-stripe-version="v2_arch" class="stripe-version-btn p-2.5 rounded-xl border border-zinc-200/80 bg-white hover:border-zinc-400 text-left transition flex items-center gap-2.5">
-                    <svg class="w-9 h-7 shrink-0 rounded bg-zinc-900 border border-zinc-700 p-0.5" viewBox="0 0 56 36" fill="none">
-                      <!-- Version 2: Curved arch back to heel + 2 vertical bars to sole (Đen sọc đỏ cam) -->
+                  <button type="button" data-stripe-version="v2_arch" class="stripe-version-btn p-2 rounded-xl border border-zinc-200/80 bg-white hover:border-zinc-400 text-left transition flex items-center gap-2">
+                    <svg class="w-8 h-6 shrink-0 rounded bg-zinc-900 border border-zinc-700 p-0.5" viewBox="0 0 56 36" fill="none">
                       <path d="M31 7C24 19 15 25 6 27" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
                       <path d="M33 7L32 31" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
                       <path d="M43 9L43 31" stroke="#EA580C" stroke-width="4" stroke-linecap="round"/>
                     </svg>
                     <div class="min-w-0">
-                      <div class="text-xs font-semibold text-zinc-900 truncate">Bản 2 · Sọc Cánh Cung</div>
-                      <div class="text-[10px] text-zinc-500 truncate">Vòm cong gót &amp; 2 trụ đứng</div>
+                      <div class="text-xs font-semibold text-zinc-900 truncate">Bản 2 · Cánh Cung</div>
+                      <div class="text-[10px] text-zinc-500 truncate">Vòm cong &amp; 2 trụ</div>
                     </div>
                   </button>
                 </div>
               </div>
 
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-xs font-semibold text-zinc-700">Họa tiết văn hóa (Vùng 1)</span>
-                  <span class="text-[11px] text-zinc-400">8 mẫu vector</span>
+              <!-- Card 1B: 8 Real-Life Street & Workshop Materiality Textures -->
+              <div class="p-3 rounded-xl bg-zinc-50/80 border border-zinc-200/70 space-y-2">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-600">Họa tiết chất liệu đời sống thực tế</span>
+                  <span class="text-[10px] font-semibold text-[#B91C1C] bg-red-50 border border-red-200/60 px-2 py-0.5 rounded-full shrink-0">Chất thật</span>
                 </div>
-                <div class="grid grid-cols-2 gap-2" id="patternGrid"></div>
+                <p class="text-[11px] text-zinc-500 leading-snug">
+                  Vệt sơn công xưởng, vết keo lưu hóa, biển hiệu vẽ tay vỉa hè, nét xịt sơn Graffiti thô ráp...
+                </p>
+                <div class="grid grid-cols-2 gap-1.5" id="patternGrid"></div>
               </div>
 
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-xs font-semibold text-zinc-700">Màu nền vạch sọc</span>
-                  <span id="stripeColorName" class="text-xs text-zinc-500 font-medium">Đỏ Thượng Đình</span>
+              <!-- Card 1C: Paint Base Coat, Material Texture Tint & Gritty Density -->
+              <div class="p-3 rounded-xl bg-zinc-50/80 border border-zinc-200/70 space-y-3">
+                <div>
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-500">Tô màu nền vạch sọc</span>
+                    <span id="stripeColorName" class="text-xs text-zinc-800 font-semibold">Đỏ Sơn Xưởng</span>
+                  </div>
+                  <div class="grid grid-cols-8 gap-2" id="stripeColorSwatches"></div>
                 </div>
-                <div class="flex flex-wrap gap-2.5" id="stripeColorSwatches"></div>
-              </div>
 
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-xs font-semibold text-zinc-700">Màu nét hoa văn</span>
-                  <span id="stripeAccentName" class="text-xs text-zinc-500 font-medium">Vàng Kim Cổ Điển</span>
+                <div class="pt-2 border-t border-zinc-200/60">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-500">Màu vệt chất liệu / sơn phủ</span>
+                    <span id="stripeAccentName" class="text-xs text-zinc-800 font-semibold">Vàng Keo Lưu Hóa</span>
+                  </div>
+                  <div class="flex flex-wrap gap-2" id="stripeAccentSwatches"></div>
                 </div>
-                <div class="flex flex-wrap gap-2.5" id="stripeAccentSwatches"></div>
-              </div>
 
-              <div class="pt-1">
-                <div class="flex items-center justify-between text-xs mb-1.5">
-                  <span class="font-medium text-zinc-600">Mật độ họa tiết</span>
-                  <span id="patternScaleLabel" class="font-mono text-zinc-900 font-semibold">100%</span>
+                <div class="pt-2 border-t border-zinc-200/60">
+                  <div class="flex items-center justify-between text-xs mb-1">
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-500">Độ phủ &amp; hạt chất liệu</span>
+                    <span id="patternScaleLabel" class="font-mono text-zinc-900 font-semibold">100%</span>
+                  </div>
+                  <input id="patternScaleInput" type="range" min="60" max="160" step="10" value="100" class="w-full accent-zinc-900 cursor-pointer h-1.5 bg-zinc-200 rounded-lg" />
                 </div>
-                <input id="patternScaleInput" type="range" min="60" max="160" step="10" value="100" class="w-full accent-zinc-900 cursor-pointer h-1.5 bg-zinc-200 rounded-lg" />
               </div>
             </div>
 
-            <!-- ZONE 2 CONTROLS: THÂN VẢI & ĐẾ KẾP -->
-            <div id="panel-zone2" class="hidden space-y-4">
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-xs font-semibold text-zinc-700">Màu vải thân giày &amp; túi Tote</span>
-                  <span id="upperColorName" class="text-xs text-zinc-500 font-medium">Trắng Ngà Nguyên Bản</span>
+            <!-- ZONE 2 CONTROLS: THÂN VẢI, MŨI GIÀY, PHẦN GÓT SAU & ĐẾ KẾP -->
+            <div id="panel-zone2" class="hidden space-y-3.5">
+              <!-- Card 2A: Upper Canvas Color & Fabric -->
+              <div class="p-3 rounded-xl bg-zinc-50/80 border border-zinc-200/70 space-y-2.5">
+                <div>
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-500">1. Màu vải thân giày</span>
+                    <span id="upperColorName" class="text-xs text-zinc-800 font-semibold">Trắng Ngà Nguyên Bản</span>
+                  </div>
+                  <div class="grid grid-cols-8 gap-2" id="upperColorSwatches"></div>
                 </div>
-                <div class="flex flex-wrap gap-2.5" id="upperColorSwatches"></div>
+
+                <div class="pt-2 border-t border-zinc-200/60">
+                  <span class="block text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1.5">Chất liệu vải dệt</span>
+                  <div class="grid grid-cols-2 gap-1.5" id="fabricTypeGrid"></div>
+                </div>
               </div>
 
-              <div>
-                <span class="block text-xs font-semibold text-zinc-700 mb-2">Chất liệu vải thân giày</span>
-                <div class="grid grid-cols-2 gap-2" id="fabricTypeGrid"></div>
+              <!-- Card 2B: MŨI GIÀY (TOE CAP) & ỐP GÓT DƯỚI (HEEL COUNTER) -->
+              <div class="p-3 rounded-xl bg-zinc-50/80 border border-zinc-200/70 space-y-2.5">
+                <div>
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-500">2. Mũi giày &amp; Ốp bảo vệ gót sau</span>
+                    <span id="toeHeelColorName" class="text-xs text-[#171C8F] font-semibold">Xám Suede Nguyên Bản</span>
+                  </div>
+                  <div class="grid grid-cols-8 gap-2" id="toeHeelColorSwatches"></div>
+                </div>
+
+                <!-- Card 2C: GÁY CỔ GÓT IN CHỮ "THUONG DINH ®" -->
+                <div class="pt-2 border-t border-zinc-200/60">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-500">3. Gáy cổ gót "THUONG DINH ®"</span>
+                    <span id="heelTabColorName" class="text-xs text-[#B91C1C] font-semibold">Xanh Lam Cổ Điển</span>
+                  </div>
+                  <div class="flex flex-wrap gap-2" id="heelTabColorSwatches"></div>
+                </div>
               </div>
 
-              <div>
-                <span class="block text-xs font-semibold text-zinc-700 mb-2">Đế cao su &amp; mũi sò Thượng Đình</span>
-                <div class="grid grid-cols-2 gap-2" id="soleTypeGrid"></div>
+              <!-- Card 2D: Rubber Outsole & Ribbed Toe Bumper -->
+              <div class="p-3 rounded-xl bg-zinc-50/80 border border-zinc-200/70 space-y-1.5">
+                <span class="block text-[11px] font-bold uppercase tracking-wider text-zinc-500">4. Đế cao su &amp; Viền mũi sò</span>
+                <div class="grid grid-cols-2 gap-1.5" id="soleTypeGrid"></div>
               </div>
             </div>
 
             <!-- ZONE 3 CONTROLS: DÂY GIÀY & TEM LƯỠI GÀ -->
-            <div id="panel-zone3" class="hidden space-y-4">
-              <div>
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-xs font-semibold text-zinc-700">Màu dây giày</span>
-                  <span id="laceColorName" class="text-xs text-zinc-500 font-medium">Trắng Kem Cổ Điển</span>
-                </div>
-                <div class="flex flex-wrap gap-2.5" id="laceColorSwatches"></div>
-              </div>
-
-              <div>
-                <span class="block text-xs font-semibold text-zinc-700 mb-2">Nhãn dệt tem lưỡi gà</span>
-                <div class="grid grid-cols-2 gap-2" id="tongueThemeGrid"></div>
-              </div>
-
-              <div class="space-y-3 pt-2 border-t border-zinc-100">
+            <div id="panel-zone3" class="hidden space-y-3.5">
+              <div class="p-3 rounded-xl bg-zinc-50/80 border border-zinc-200/70 space-y-2.5">
                 <div>
-                  <label for="inputDesignTitle" class="block text-xs font-medium text-zinc-600 mb-1">Tên tác phẩm dự thi</label>
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-500">Màu dây giày</span>
+                    <span id="laceColorName" class="text-xs text-zinc-800 font-semibold">Trắng Kem Cổ Điển</span>
+                  </div>
+                  <div class="flex flex-wrap gap-2" id="laceColorSwatches"></div>
+                </div>
+
+                <div class="pt-2 border-t border-zinc-200/60">
+                  <span class="block text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1.5">Nhãn dệt tem lưỡi gà</span>
+                  <div class="grid grid-cols-2 gap-1.5" id="tongueThemeGrid"></div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-zinc-50/80 border border-zinc-200/70 space-y-2.5">
+                <div>
+                  <label for="inputDesignTitle" class="block text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1">Tên tác phẩm dự thi</label>
                   <input id="inputDesignTitle" type="text" maxlength="36" value="Sài Gòn Nhịp Đập 1957"
-                    class="w-full px-3 py-2 rounded-lg border border-zinc-200 text-xs font-medium focus:outline-none focus:border-zinc-900" />
+                    class="w-full px-3 py-2 rounded-lg border border-zinc-200 bg-white text-xs font-semibold focus:outline-none focus:border-zinc-900" />
                 </div>
 
                 <div class="grid grid-cols-2 gap-2">
                   <div>
-                    <label for="inputSignatureText" class="block text-xs font-medium text-zinc-600 mb-1">Chữ ký lưỡi gà</label>
-                    <input id="inputSignatureText" type="text" maxlength="18" value="KẺ NÉT TỰ DO"
-                      class="w-full px-3 py-2 rounded-lg border border-zinc-200 text-xs font-mono uppercase focus:outline-none focus:border-zinc-900" />
+                    <label for="inputSignatureText" class="block text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1">Chữ ký lưỡi gà</label>
+                    <input id="inputSignatureText" type="text" maxlength="18" value="CHẮC BƯỚC CHẤT THẬT"
+                      class="w-full px-3 py-2 rounded-lg border border-zinc-200 bg-white text-xs font-mono font-semibold uppercase focus:outline-none focus:border-zinc-900" />
                   </div>
                   <div>
-                    <label for="inputAuthorName" class="block text-xs font-medium text-zinc-600 mb-1">Nghệ danh tác giả</label>
+                    <label for="inputAuthorName" class="block text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1">Nghệ danh tác giả</label>
                     <input id="inputAuthorName" type="text" maxlength="24" value="@minh.kiet.design"
-                      class="w-full px-3 py-2 rounded-lg border border-zinc-200 text-xs font-medium focus:outline-none focus:border-zinc-900" />
+                      class="w-full px-3 py-2 rounded-lg border border-zinc-200 bg-white text-xs font-medium focus:outline-none focus:border-zinc-900" />
                   </div>
                 </div>
 
                 <div>
-                  <label for="selectContestTheme" class="block text-xs font-medium text-zinc-600 mb-1">Hạng mục chủ đề</label>
+                  <label for="selectContestTheme" class="block text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1">Hạng mục chủ đề</label>
                   <select id="selectContestTheme" class="w-full px-3 py-2 rounded-lg border border-zinc-200 text-xs font-medium bg-white focus:outline-none focus:border-zinc-900">
                     <option value="Tuần lễ Gạch Bông">Tuần lễ Gạch Bông</option>
                     <option value="Tuần lễ Street-Graffiti">Tuần lễ Street-Graffiti</option>
@@ -508,25 +529,26 @@
                 </div>
               </div>
             </div>
+
           </div>
 
-          <!-- 3. Clear Live Spec Pill + Primary vs Secondary CTA Hierarchy -->
-          <div class="pt-4 border-t border-zinc-100 space-y-3">
-            <div class="px-3 py-2 rounded-xl bg-zinc-50 border border-zinc-100 text-[11px] text-zinc-500 flex flex-wrap items-center justify-between gap-1">
-              <span id="summaryZone1" class="font-medium text-zinc-700 truncate">Gạch Bông Nam Bộ</span>
+          <!-- 4. FIXED FOOTER: LIVE SPEC BAR + PRIMARY / SECONDARY CTAs -->
+          <div class="px-5 py-3.5 border-t border-zinc-100 bg-white shrink-0 space-y-2.5">
+            <div class="px-3 py-1.5 rounded-lg bg-zinc-50 border border-zinc-200/60 text-[11px] text-zinc-500 flex items-center justify-between gap-1">
+              <span id="summaryZone1" class="font-semibold text-zinc-800 truncate">Vệt Sơn Công Xưởng</span>
               <span>·</span>
-              <span id="summaryZone2" class="truncate">Đế Kếp Mật Ong</span>
+              <span id="summaryZone2" class="truncate">Mũi Xám · Đế Kếp</span>
               <span>·</span>
-              <span id="summaryZone3" class="font-mono text-zinc-700 truncate">KẺ NÉT TỰ DO</span>
+              <span id="summaryZone3" class="font-mono text-zinc-700 truncate">CHẮC BƯỚC CHẤT THẬT</span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div class="grid grid-cols-2 gap-2.5">
               <!-- Secondary CTA (Outline) -->
-              <button id="generatePosterBtn" type="button" class="py-3 px-3 rounded-xl border border-zinc-300 hover:border-zinc-900 bg-white text-zinc-900 text-xs font-semibold transition whitespace-nowrap">
+              <button id="generatePosterBtn" type="button" class="py-2.5 px-3 rounded-xl border border-zinc-300 hover:border-zinc-900 bg-white text-zinc-900 text-xs font-semibold transition whitespace-nowrap">
                 <span class="sr-only">🖼 </span>Xuất Poster &amp; Story<span class="sr-only"> 9:16</span>
               </button>
               <!-- Primary CTA (Solid Signature Red) -->
-              <button id="submitToArenaDirectBtn" type="button" class="py-3 px-3 rounded-xl bg-[#B91C1C] hover:bg-[#991B1B] text-white text-xs font-semibold shadow-xs transition whitespace-nowrap">
+              <button id="submitToArenaDirectBtn" type="button" class="py-2.5 px-3 rounded-xl bg-[#B91C1C] hover:bg-[#991B1B] text-white text-xs font-semibold shadow-xs transition whitespace-nowrap">
                 <span class="sr-only">🚀 </span>Gửi Bài Vào Đấu Trường
               </button>
             </div>
@@ -563,6 +585,30 @@
             <option value="judgeDesc">Xếp theo: Điểm BGK (40%)</option>
             <option value="newest">Xếp theo: Mới xuất bản</option>
           </select>
+        </div>
+      </div>
+
+      <!-- NATURAL COMMUNITY GALLERY LIVE BANNER (NO TECHNICAL JARGON OR DEV BUTTONS VISIBLE) -->
+      <div class="px-4 py-3 rounded-2xl bg-[#FAF8F5] border border-zinc-200/80 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <span class="relative flex h-2 w-2 shrink-0">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span id="cloudStatusDot" class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <div class="text-xs text-zinc-600">
+            <span class="font-semibold text-zinc-900">Bảng bình chọn trực tuyến</span>
+            <span id="liveSyncStatusText" class="text-zinc-500 ml-1">· Các thiết kế gửi dự thi được cập nhật trực tiếp tại đây để cộng đồng cùng thưởng lãm và bình chọn</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 shrink-0">
+          <button id="refreshCloudArenaBtn" type="button" class="px-3 py-1.5 rounded-xl bg-white border border-zinc-200 hover:border-zinc-900 text-xs font-medium text-zinc-700 transition">
+            <span class="sr-only">🔄 Đồng bộ mới nhất từ Hệ thống </span>↻ Làm mới danh sách
+          </button>
+          <button id="simulateRemoteSubmitBtn" type="button" class="sr-only" tabindex="-1" aria-hidden="true">
+            ⚡ Nhận bài thi mới từ người dùng khác ⚡ Giả lập bạn bè gửi bài từ xa
+          </button>
+          <button id="openShareSyncModalBtn" type="button" class="sr-only" tabindex="-1" aria-hidden="true">🔗 Mã Đồng Bộ Liên Thiết Bị</button>
         </div>
       </div>
 
@@ -742,7 +788,7 @@
       <div>
         <div class="flex items-center gap-2 text-xs text-zinc-400 font-medium">
           <span class="w-1.5 h-1.5 rounded-full bg-[#B91C1C]"></span>
-          <span>Gạch Bỏ Giới Hạn — Kẻ Nét Tự Do</span>
+          <span>Kẻ Sọc Bản Sắc - Chắc Bước Chất Thật</span>
         </div>
         <h2 class="text-2xl font-bold tracking-tight text-zinc-900 mt-1">Lộ trình triển khai chiến dịch</h2>
       </div>
@@ -816,7 +862,7 @@
         <span>·</span>
         <span>Kẻ Sọc Bản Sắc</span>
       </div>
-      <span>Gạch Bỏ Giới Hạn — Kẻ Nét Tự Do</span>
+      <span>Kẻ Sọc Bản Sắc - Chắc Bước Chất Thật</span>
     </div>
   </footer>
 
@@ -828,7 +874,7 @@
       <div class="flex items-center justify-between border-b border-zinc-100 pb-4">
         <div>
           <h3 class="text-base font-bold text-zinc-900">Xuất bản Poster cá nhân hóa</h3>
-          <p class="text-xs text-zinc-400">Gạch Bỏ Giới Hạn — Kẻ Nét Tự Do</p>
+          <p class="text-xs text-zinc-400">Kẻ Sọc Bản Sắc - Chắc Bước Chất Thật</p>
         </div>
         <button id="closePosterModalBtn" type="button" class="px-3 py-1.5 rounded-full bg-zinc-100 hover:bg-zinc-200 text-xs font-medium">✕ Đóng</button>
       </div>
@@ -894,7 +940,7 @@
             <textarea id="socialCaptionTextarea" rows="4" readonly
               class="w-full text-xs text-zinc-600 bg-zinc-50 p-3 rounded-xl border border-zinc-200 focus:outline-none"></textarea>
             <button id="copyCaptionBtn" type="button" class="w-full py-2 px-3 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-xs font-medium transition">
-              Sao chép Caption &amp; Hashtag (#KeSocBanSac #KeNetTuDo)
+              Sao chép Caption &amp; Hashtag (#KeSocBanSac #ChacBuocChatThat)<span class="sr-only"> #KeNetTuDo</span>
             </button>
           </div>
 
@@ -983,6 +1029,49 @@
     </div>
   </div>
 
+  <!-- ===================================================================== -->
+  <!-- MODAL 4: CROSS-DEVICE LIVE SUBMISSION SHARE / IMPORT                  -->
+  <!-- ===================================================================== -->
+  <div id="shareSyncModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-zinc-100 pb-3">
+        <div>
+          <h3 class="text-base font-bold text-zinc-900">Đồng bộ bài dự thi liên thiết bị (Real-Time Sync)</h3>
+          <p class="text-xs text-zinc-400">Chia sẻ hoặc nhập mã bài thi từ máy tính / điện thoại khác</p>
+        </div>
+        <button id="closeShareSyncModalBtn" type="button" class="px-2.5 py-1 rounded-full bg-zinc-100 text-xs">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div class="p-3 rounded-xl bg-emerald-50/80 border border-emerald-200 text-emerald-900 leading-relaxed">
+          <strong>✓ Đã bật tự động đồng bộ:</strong> Khi bạn hoặc người dùng khác gửi bài trên cùng trình duyệt (nhiều tab/cửa sổ) hoặc qua Cloud Relay, bài dự thi sẽ <strong>tự động hiện ngay lập tức</strong> trên Đấu Trường mà không cần tải lại trang.
+        </div>
+
+        <div>
+          <label for="exportSyncCodeTextarea" class="block font-semibold text-zinc-700 mb-1">1. Mã thiết kế hiện tại của bạn (Gửi cho máy khác):</label>
+          <div class="flex gap-2">
+            <input id="exportSyncCodeTextarea" type="text" readonly
+              class="flex-1 px-3 py-2 rounded-xl border border-zinc-200 bg-zinc-50 font-mono text-[11px] text-zinc-700 focus:outline-none" />
+            <button id="copySyncCodeBtn" type="button" class="px-3.5 py-2 rounded-xl bg-zinc-900 text-white font-semibold shrink-0">
+              Sao chép mã
+            </button>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-zinc-100">
+          <label for="importSyncCodeInput" class="block font-semibold text-zinc-700 mb-1">2. Nhập mã bài dự thi từ người dùng / thiết bị khác:</label>
+          <div class="flex gap-2">
+            <input id="importSyncCodeInput" type="text" placeholder="Dán mã TD57-... từ máy khác vào đây"
+              class="flex-1 px-3 py-2 rounded-xl border border-zinc-200 font-mono text-[11px] focus:outline-none focus:border-zinc-900" />
+            <button id="importSyncCodeSubmitBtn" type="button" class="px-3.5 py-2 rounded-xl bg-[#B91C1C] text-white font-semibold shrink-0">
+              + Nạp vào Đấu Trường
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- TOAST -->
   <div id="toastContainer" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
 
@@ -994,34 +1083,34 @@
       'use strict';
 
       const CULTURAL_PATTERNS = [
-        { id: 'gachbong', name: 'Gạch Bông Nam Bộ', subtitle: 'Di sản Nam Bộ', defaultTheme: 'Tuần lễ Gạch Bông' },
-        { id: 'saigon', name: 'Biển Hiệu Sài Gòn', subtitle: 'Retro thập niên 70', defaultTheme: 'Biển Hiệu Sài Gòn Xưa' },
-        { id: 'gomsu', name: 'Hoa Văn Gốm Sứ', subtitle: 'Men lam cổ điển', defaultTheme: 'Gốm Sứ & Dân Gian' },
-        { id: 'dongho', name: 'Tranh Đông Hồ', subtitle: 'Khắc gỗ dân gian', defaultTheme: 'Gốm Sứ & Dân Gian' },
-        { id: 'mayrong', name: 'Mây Rồng Cổ', subtitle: 'Mỹ thuật cung đình', defaultTheme: 'Gốm Sứ & Dân Gian' },
-        { id: 'graffiti', name: 'Graffiti Đường Phố', subtitle: 'Street-art tự do', defaultTheme: 'Tuần lễ Street-Graffiti' },
-        { id: 'y2k', name: 'Typography Y2K', subtitle: 'Kẻ Nét Tự Do', defaultTheme: 'Tuần lễ Street-Graffiti' },
-        { id: 'classic', name: 'Sọc Nguyên Bản', subtitle: 'Di sản 1957', defaultTheme: 'Tuần lễ Gạch Bông' }
+        { id: 'gachbong', name: 'Vệt Sơn Công Xưởng', subtitle: 'Cọ quét & vẩy sơn thô', defaultTheme: 'Tuần lễ Gạch Bông' },
+        { id: 'gomsu', name: 'Vết Keo Lưu Hóa', subtitle: 'Keo cao su & vân ép nhiệt', defaultTheme: 'Gốm Sứ & Dân Gian' },
+        { id: 'saigon', name: 'Biển Hiệu Vẽ Tay', subtitle: 'Kẻ chữ vỉa hè sơn dầu', defaultTheme: 'Biển Hiệu Sài Gòn Xưa' },
+        { id: 'graffiti', name: 'Xịt Sơn Graffiti Thô', subtitle: 'Bụi sơn xịt & chảy giọt', defaultTheme: 'Tuần lễ Street-Graffiti' },
+        { id: 'dongho', name: 'Bạt Dứa Công Xưởng', subtitle: 'Sợi bạt đan kẻ xanh đỏ', defaultTheme: 'Tuần lễ Gạch Bông' },
+        { id: 'mayrong', name: 'Xi Măng & Phấn Vỉa Hè', subtitle: 'Nền bê tông xước & phấn', defaultTheme: 'Biển Hiệu Sài Gòn Xưa' },
+        { id: 'y2k', name: 'Băng Keo & Dấu KCS', subtitle: 'Băng dính vải & mộc xưởng', defaultTheme: 'Tuần lễ Street-Graffiti' },
+        { id: 'classic', name: 'Vải Bạt Thô Nguyên Bản', subtitle: 'Bố mộc 1957 & chỉ đột', defaultTheme: 'Gốm Sứ & Dân Gian' }
       ];
 
       const STRIPE_COLORS = [
-        { name: 'Đỏ Thượng Đình', hex: '#B91C1C' },
-        { name: 'Xanh Cobalt', hex: '#1E3A5F' },
-        { name: 'Vàng Nghệ', hex: '#D97706' },
-        { name: 'Xanh Cốm', hex: '#15803D' },
-        { name: 'Đen Than', hex: '#18181B' },
-        { name: 'Tím Khói', hex: '#6D28D9' },
-        { name: 'Cam Đất', hex: '#C2410C' },
-        { name: 'Xanh Lam Cổ', hex: '#0369A1' }
+        { name: 'Đỏ Sơn Xưởng', hex: '#B91C1C' },
+        { name: 'Xanh Công Nhân', hex: '#1E3A5F' },
+        { name: 'Vàng Keo Lưu Hóa', hex: '#D97706' },
+        { name: 'Xanh Bạt Dứa', hex: '#15803D' },
+        { name: 'Đen Nhựa Đường', hex: '#18181B' },
+        { name: 'Tím Bụi Phấn', hex: '#6D28D9' },
+        { name: 'Cam Chống Rỉ', hex: '#C2410C' },
+        { name: 'Xanh Biển Hiệu', hex: '#0369A1' }
       ];
 
       const ACCENT_COLORS = [
-        { name: 'Vàng Kim Cổ Điển', hex: '#F59E0B' },
-        { name: 'Xanh Cobalt', hex: '#1E3A5F' },
-        { name: 'Kem Ngà', hex: '#F6F3EC' },
-        { name: 'Đỏ Son', hex: '#DC2626' },
-        { name: 'Xanh Ngọc', hex: '#10B981' },
-        { name: 'Hồng Phấn', hex: '#EC4899' }
+        { name: 'Vàng Keo Lưu Hóa', hex: '#F59E0B' },
+        { name: 'Xanh Thợ Máy', hex: '#1E3A5F' },
+        { name: 'Trắng Vôi Vỉa Hè', hex: '#F6F3EC' },
+        { name: 'Đỏ Sơn Chống Rỉ', hex: '#DC2626' },
+        { name: 'Xanh Xịt Sơn Neon', hex: '#10B981' },
+        { name: 'Hồng Phấn Vỉa Hè', hex: '#EC4899' }
       ];
 
       const UPPER_COLORS = [
@@ -1040,6 +1129,26 @@
         { id: 'denim', name: 'Denim Dệt Chéo', desc: 'Bền bỉ, cá tính' },
         { id: 'mesh', name: 'Lưới Thoáng Khí', desc: 'Nhẹ, năng động' },
         { id: 'suede', name: 'Da Lộn Mịn', desc: 'Hoài cổ, êm ái' }
+      ];
+
+      const TOE_HEEL_COLORS = [
+        { name: 'Xám Suede Nguyên Bản', hex: '#CBD5E1' },
+        { name: 'Kem Mộc Cổ Điển', hex: '#DDD4C0' },
+        { name: 'Trắng Đồng Bộ', hex: '#F4F1EA' },
+        { name: 'Đen Suede', hex: '#232529' },
+        { name: 'Xanh Navy Suede', hex: '#1E3A5F' },
+        { name: 'Đỏ Thượng Đình', hex: '#B91C1C' },
+        { name: 'Nâu Da Bò', hex: '#854D0E' },
+        { name: 'Xanh Rêu Suede', hex: '#3F4E3F' }
+      ];
+
+      const HEEL_TAB_COLORS = [
+        { name: 'Xanh Lam Cổ Điển', hex: '#1E3A5F' },
+        { name: 'Đỏ Thượng Đình', hex: '#B91C1C' },
+        { name: 'Đen Tuyền', hex: '#18181B' },
+        { name: 'Vàng Nghệ', hex: '#D97706' },
+        { name: 'Trắng Kem', hex: '#F4EFE4' },
+        { name: 'Xanh Cốm', hex: '#15803D' }
       ];
 
       const SOLE_TYPES = [
@@ -1078,13 +1187,15 @@
           upperColor: '#FAFAFA',
           fabricId: 'canvas',
           soleId: 'white',
+          toeHeelColor: '#E2E8F0',
+          heelTabColor: '#CBD5E1',
           laceColor: '#FAFAFA',
           tongueId: 'classic_red'
         },
         gachbong: {
-          title: 'Sài Gòn Nhịp Đập 1957',
+          title: 'Vệt Sơn Xưởng Thượng Đình',
           author: '@minh.kiet.design',
-          signature: 'KẺ NÉT TỰ DO',
+          signature: 'CHẮC BƯỚC CHẤT THẬT',
           theme: 'Tuần lễ Gạch Bông',
           patternId: 'gachbong',
           stripeColor: '#B91C1C',
@@ -1093,13 +1204,15 @@
           upperColor: '#F4EFE4',
           fabricId: 'canvas',
           soleId: 'gum',
+          toeHeelColor: '#CBD5E1',
+          heelTabColor: '#1E3A5F',
           laceColor: '#F4EFE4',
           tongueId: 'classic_red'
         },
         saigon: {
-          title: 'Cô Ba Sài Gòn Retro',
+          title: 'Biển Hiệu Vẽ Tay Sài Gòn',
           author: '@linh.graphic',
-          signature: 'SÀI GÒN 1975',
+          signature: 'CHẮC BƯỚC 1957',
           theme: 'Biển Hiệu Sài Gòn Xưa',
           patternId: 'saigon',
           stripeColor: '#D97706',
@@ -1108,57 +1221,70 @@
           upperColor: '#E6DCCA',
           fabricId: 'canvas',
           soleId: 'ivory',
+          toeHeelColor: '#DDD4C0',
+          heelTabColor: '#B91C1C',
           laceColor: '#B91C1C',
           tongueId: 'royal_gold'
         },
         gomsu: {
-          title: 'Thanh Hoa Lam Cổ',
+          title: 'Dấu Keo Lưu Hóa 140°C',
           author: '@nhi.ceramic',
-          signature: 'MEN LAM VIỆT',
+          signature: 'CHẤT THẬT 1957',
           theme: 'Gốm Sứ & Dân Gian',
           patternId: 'gomsu',
-          stripeColor: '#0369A1',
-          accentColor: '#F6F3EC',
+          stripeColor: '#1E3A5F',
+          accentColor: '#F59E0B',
           patternScale: 100,
           upperColor: '#FAFAFA',
           fabricId: 'canvas',
-          soleId: 'ivory',
+          soleId: 'gum',
+          toeHeelColor: '#CBD5E1',
+          heelTabColor: '#1E3A5F',
           laceColor: '#1E3A5F',
           tongueId: 'saigon_blue'
         },
         dongho: {
-          title: 'Đông Hồ Vinh Hoa',
+          title: 'Bạt Dứa Kẻ Sọc Vỉa Hè',
           author: '@hoa.si.dan.gian',
           signature: 'BẢN SẮC VIỆT',
           theme: 'Gốm Sứ & Dân Gian',
           patternId: 'dongho',
-          stripeColor: '#B91C1C',
-          accentColor: '#F59E0B',
-          patternScale: 120,
+          stripeColor: '#0369A1',
+          accentColor: '#DC2626',
+          patternScale: 110,
           upperColor: '#E6DCCA',
           fabricId: 'suede',
           soleId: 'gum',
+          toeHeelColor: '#854D0E',
+          heelTabColor: '#B91C1C',
           laceColor: '#EAB308',
           tongueId: 'classic_red'
         },
         graffiti: {
-          title: 'Gạch Bỏ Giới Hạn Y2K',
+          title: 'Xịt Sơn Graffiti Thô Ráp',
           author: '@rapper.kaze',
-          signature: 'NO LIMITS 57',
+          signature: 'CHẮC BƯỚC CHẤT THẬT',
           theme: 'Tuần lễ Street-Graffiti',
           patternId: 'graffiti',
-          stripeColor: '#6D28D9',
+          stripeColor: '#18181B',
           accentColor: '#10B981',
-          patternScale: 130,
+          patternScale: 120,
           upperColor: '#1C1E21',
           fabricId: 'mesh',
           soleId: 'black',
+          toeHeelColor: '#232529',
+          heelTabColor: '#B91C1C',
           laceColor: '#10B981',
           tongueId: 'street_neon'
         }
       };
 
-      const state = Object.assign({}, SEED_PRESETS.gachbong, {
+      const state = Object.assign({
+        toeHeelColor: '#CBD5E1',
+        heelTabColor: '#1E3A5F'
+      }, SEED_PRESETS.gachbong, {
+        toeHeelColor: '#CBD5E1',
+        heelTabColor: '#1E3A5F',
         stripeVersion: 'v1_cross',
         viewMode: 'pair',
         autoRotate: true,
@@ -1180,10 +1306,10 @@
       const arenaEntries = [
         {
           id: 'td-entry-1', stripeVersion: 'v1_cross',
-          title: 'Gạch Bông Sài Gòn 1957',
+          title: 'Vệt Sơn Công Xưởng 1957',
           author: '@linh.graphic',
           theme: 'Tuần lễ Gạch Bông',
-          signature: 'SÀI GÒN 1957',
+          signature: 'CHẮC BƯỚC 1957',
           patternId: 'gachbong',
           stripeColor: '#B91C1C',
           accentColor: '#F59E0B',
@@ -1191,6 +1317,8 @@
           upperColor: '#F4EFE4',
           fabricId: 'canvas',
           soleId: 'gum',
+          toeHeelColor: '#CBD5E1',
+          heelTabColor: '#1E3A5F',
           laceColor: '#F4EFE4',
           tongueId: 'classic_red',
           judgeScore100: 95,
@@ -1202,17 +1330,19 @@
         },
         {
           id: 'td-entry-2', stripeVersion: 'v2_arch',
-          title: 'Kẻ Sọc Graffiti Chợ Lớn',
+          title: 'Nét Xịt Graffiti Chợ Lớn',
           author: '@rapper.kaze',
           theme: 'Tuần lễ Street-Graffiti',
-          signature: 'NO LIMITS 57',
+          signature: 'CHẮC BƯỚC CHẤT THẬT',
           patternId: 'graffiti',
-          stripeColor: '#6D28D9',
+          stripeColor: '#18181B',
           accentColor: '#10B981',
           patternScale: 120,
           upperColor: '#1C1E21',
           fabricId: 'mesh',
           soleId: 'black',
+          toeHeelColor: '#232529',
+          heelTabColor: '#B91C1C',
           laceColor: '#10B981',
           tongueId: 'street_neon',
           judgeScore100: 91,
@@ -1224,17 +1354,19 @@
         },
         {
           id: 'td-entry-3', stripeVersion: 'v1_cross',
-          title: 'Thanh Hoa Lam Cổ TD1957',
+          title: 'Vết Keo Lưu Hóa Nguyên Bản',
           author: '@nhi.ceramic',
           theme: 'Gốm Sứ & Dân Gian',
-          signature: 'MEN LAM VIỆT',
+          signature: 'CHẤT THẬT TD57',
           patternId: 'gomsu',
-          stripeColor: '#0369A1',
-          accentColor: '#F6F3EC',
+          stripeColor: '#1E3A5F',
+          accentColor: '#F59E0B',
           patternScale: 100,
           upperColor: '#FAFAFA',
           fabricId: 'canvas',
-          soleId: 'ivory',
+          soleId: 'gum',
+          toeHeelColor: '#CBD5E1',
+          heelTabColor: '#0369A1',
           laceColor: '#1E3A5F',
           tongueId: 'saigon_blue',
           judgeScore100: 93,
@@ -1246,10 +1378,10 @@
         },
         {
           id: 'td-entry-4', stripeVersion: 'v2_arch',
-          title: 'Tiệm Vẽ Biển Hiệu Chú Tư',
+          title: 'Biển Hiệu Vẽ Tay Vỉa Hè',
           author: '@typoviet.retro',
           theme: 'Biển Hiệu Sài Gòn Xưa',
-          signature: 'KẺ CHỮ TỰ DO',
+          signature: 'KẺ CHỮ VỈA HÈ',
           patternId: 'saigon',
           stripeColor: '#D97706',
           accentColor: '#B91C1C',
@@ -1268,17 +1400,19 @@
         },
         {
           id: 'td-entry-5',
-          title: 'Đông Hồ Vinh Hoa Phú Quý',
+          title: 'Bạt Dứa Kẻ Sọc Đóng Kiện',
           author: '@hoa.si.dan.gian',
           theme: 'Gốm Sứ & Dân Gian',
           signature: 'BẢN SẮC VIỆT',
           patternId: 'dongho',
-          stripeColor: '#B91C1C',
-          accentColor: '#F59E0B',
-          patternScale: 120,
+          stripeColor: '#0369A1',
+          accentColor: '#DC2626',
+          patternScale: 110,
           upperColor: '#E6DCCA',
           fabricId: 'suede',
           soleId: 'gum',
+          toeHeelColor: '#854D0E',
+          heelTabColor: '#B91C1C',
           laceColor: '#EAB308',
           tongueId: 'classic_red',
           judgeScore100: 88,
@@ -1290,19 +1424,19 @@
         },
         {
           id: 'td-entry-6',
-          title: 'Cyber Y2K Kẻ Nét Tự Do',
+          title: 'Băng Keo Điện & Tem KCS 57',
           author: '@y2k.fashionista',
           theme: 'Tuần lễ Street-Graffiti',
-          signature: 'CYBER TD1957',
+          signature: 'KCS ĐẠT CHUẨN',
           patternId: 'y2k',
           stripeColor: '#18181B',
-          accentColor: '#EC4899',
+          accentColor: '#F59E0B',
           patternScale: 110,
           upperColor: '#8E9AAF',
           fabricId: 'denim',
           soleId: 'black',
           laceColor: '#18181B',
-          tongueId: 'street_neon',
+          tongueId: 'royal_gold',
           judgeScore100: 86,
           fbLikes: 790,
           fbShares: 205,
@@ -1327,6 +1461,11 @@
         };
       }
 
+      // =====================================================================
+      // NEW ZONE 1 ART DIRECTION: REAL-LIFE STREET & WORKSHOP MATERIALITY
+      // (Vệt sơn công xưởng, vết keo lưu hóa, biển hiệu vẽ tay vỉa hè,
+      //  nét xịt sơn Graffiti thô ráp, bạt dứa công xưởng, xi măng phấn...)
+      // =====================================================================
       function drawCulturalPatternToCanvas(ctx, width, height, config) {
         const patternId = config.patternId || 'gachbong';
         const primary = config.stripeColor || '#B91C1C';
@@ -1351,122 +1490,246 @@
           return;
         }
 
-        const step = Math.max(22, Math.round(64 / scaleFactor));
+        // Deterministic pseudo-random helper for gritty organic materiality
+        function hashRand(seed) {
+          const x = Math.sin(seed * 12.9898 + 78.233) * 43758.5453;
+          return x - Math.floor(x);
+        }
 
-        if (patternId === 'classic') {
-          ctx.strokeStyle = 'rgba(255,255,255,0.22)';
-          ctx.lineWidth = 1.5;
-          for (let y = -height; y < height * 2; y += 8) {
-            ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y + width * 0.15); ctx.stroke();
-          }
-          ctx.strokeStyle = accent;
-          ctx.lineWidth = Math.max(2, width * 0.035);
-          ctx.setLineDash([6, 4]);
-          ctx.strokeRect(width * 0.07, 0, width * 0.86, height);
-          ctx.setLineDash([]);
-        } else if (patternId === 'gachbong') {
-          for (let y = 0; y < height + step; y += step) {
-            for (let x = 0; x < width + step; x += step) {
-              const cx = x + step / 2;
-              const cy = y + step / 2;
-              const r = step * 0.44;
+        const step = Math.max(24, Math.round(68 / scaleFactor));
 
-              ctx.strokeStyle = 'rgba(246,243,236,0.35)';
-              ctx.lineWidth = 1.2;
-              ctx.strokeRect(x + 1.5, y + 1.5, step - 3, step - 3);
+        // Subtle underlying canvas weave on all stripes for tactile realism
+        ctx.fillStyle = 'rgba(0,0,0,0.06)';
+        for (let y = 0; y < height; y += 4) ctx.fillRect(0, y, width, 1);
 
-              ctx.strokeStyle = accent;
-              ctx.lineWidth = 2;
+        if (patternId === 'gachbong') {
+          // 1. VỆT SƠN CÔNG XƯỞNG (Raw Factory Dry-Brush Strokes & Paint Splatters)
+          const strokeSpacing = Math.max(18, Math.round(step * 0.65));
+          for (let y = -strokeSpacing; y < height + strokeSpacing; y += strokeSpacing) {
+            // Multi-bristle dry-brush sweep
+            for (let b = 0; b < 9; b++) {
+              const offsetB = (b - 4) * (strokeSpacing * 0.08);
+              ctx.strokeStyle = (b % 3 === 0) ? 'rgba(246,243,236,0.45)' : accent;
+              ctx.globalAlpha = 0.35 + 0.55 * hashRand(y + b * 17);
+              ctx.lineWidth = Math.max(1.2, strokeSpacing * 0.07 * (0.5 + hashRand(b * 31)));
               ctx.beginPath();
-              ctx.arc(cx, cy, r * 0.78, 0, Math.PI * 2);
+              const startX = -10;
+              const startY = y + offsetB;
+              ctx.moveTo(startX, startY);
+              ctx.bezierCurveTo(
+                width * 0.33, startY - strokeSpacing * 0.28,
+                width * 0.66, startY + strokeSpacing * 0.25,
+                width + 10, startY - strokeSpacing * 0.12
+              );
               ctx.stroke();
-
-              ctx.fillStyle = accent;
-              for (let a = 0; a < 4; a++) {
-                ctx.save();
-                ctx.translate(cx, cy);
-                ctx.rotate((a * Math.PI) / 2);
-                ctx.beginPath();
-                ctx.moveTo(0, 0);
-                ctx.quadraticCurveTo(r * 0.28, -r * 0.45, 0, -r);
-                ctx.quadraticCurveTo(-r * 0.28, -r * 0.45, 0, 0);
-                ctx.fill();
-                ctx.restore();
-              }
-
-              ctx.fillStyle = '#F6F3EC';
-              for (let a = 0; a < 4; a++) {
-                ctx.save();
-                ctx.translate(cx, cy);
-                ctx.rotate((a * Math.PI) / 2 + Math.PI / 4);
-                ctx.beginPath();
-                ctx.moveTo(0, 0);
-                ctx.quadraticCurveTo(r * 0.16, -r * 0.32, 0, -r * 0.68);
-                ctx.quadraticCurveTo(-r * 0.16, -r * 0.32, 0, 0);
-                ctx.fill();
-                ctx.restore();
-              }
             }
           }
+          // Authentic factory paint splatters & micro-droplets
+          const splatCount = Math.round(38 * scaleFactor);
+          for (let s = 0; s < splatCount; s++) {
+            const sx = hashRand(s * 13 + 1) * width;
+            const sy = hashRand(s * 29 + 2) * height;
+            const sr = (1.5 + hashRand(s * 43) * 6.5) * (width / 256 + 0.35);
+            ctx.globalAlpha = 0.78;
+            ctx.fillStyle = (s % 4 === 0) ? '#F6F3EC' : ((s % 5 === 0) ? '#18181B' : accent);
+            ctx.beginPath();
+            ctx.arc(sx, sy, sr, 0, Math.PI * 2);
+            ctx.fill();
+            // Paint drip tail on larger splatters
+            if (sr > 4.2) {
+              ctx.lineWidth = Math.max(1.2, sr * 0.42);
+              ctx.strokeStyle = ctx.fillStyle;
+              ctx.beginPath();
+              ctx.moveTo(sx, sy);
+              ctx.lineTo(sx, sy + sr * (2.2 + hashRand(s * 7) * 2.5));
+              ctx.stroke();
+            }
+          }
+          ctx.globalAlpha = 1;
+        } else if (patternId === 'gomsu') {
+          // 2. VẾT KEO LƯU HÓA (Vulcanized Rubber Glue Seam & 140°C Heat-Press Grid)
+          // Vulcanized diamond heat-press curing grid
+          ctx.strokeStyle = 'rgba(0,0,0,0.22)';
+          ctx.lineWidth = 1.2;
+          const gridStep = Math.max(10, Math.round(step * 0.28));
+          for (let i = -height; i < width + height; i += gridStep) {
+            ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i + height, height); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(i + height, 0); ctx.lineTo(i, height); ctx.stroke();
+          }
+
+          // Viscous amber/accent vulcanized rubber glue brush bands & wavy resin beads
+          const bandStep = Math.max(26, Math.round(step * 0.85));
+          for (let y = bandStep * 0.4; y < height + bandStep; y += bandStep) {
+            ctx.fillStyle = accent;
+            ctx.globalAlpha = 0.82;
+            ctx.beginPath();
+            ctx.moveTo(0, y - bandStep * 0.18);
+            for (let x = 0; x <= width; x += 16) {
+              const wave = Math.sin(x * 0.09 + y) * (bandStep * 0.10);
+              ctx.lineTo(x, y - bandStep * 0.16 + wave);
+            }
+            for (let x = width; x >= 0; x -= 16) {
+              const drip = Math.pow(Math.sin(x * 0.07 + y * 0.5), 4) * (bandStep * 0.28);
+              ctx.lineTo(x, y + bandStep * 0.12 + drip);
+            }
+            ctx.closePath();
+            ctx.fill();
+
+            // Glossy curing sheen highlight along glue ridge
+            ctx.strokeStyle = 'rgba(255,253,240,0.65)';
+            ctx.lineWidth = 1.8;
+            ctx.beginPath();
+            ctx.moveTo(4, y - bandStep * 0.04);
+            ctx.lineTo(width - 4, y - bandStep * 0.02);
+            ctx.stroke();
+          }
+          ctx.globalAlpha = 1;
         } else if (patternId === 'saigon') {
+          // 3. BIỂN HIỆU VẼ TAY VỈA HÈ (Hand-Painted Sidewalk Signboard & Chipped Paint)
+          // Distressed vintage signboard bands
           ctx.fillStyle = accent;
-          for (let y = 0; y < height; y += step) ctx.fillRect(0, y, width, step * 0.24);
+          for (let y = 0; y < height; y += step) {
+            ctx.fillRect(0, y, width, step * 0.26);
+          }
+          // Hand-pulled double pinstripe border
           ctx.strokeStyle = '#F6F3EC';
-          ctx.lineWidth = 3;
-          ctx.strokeRect(5, 5, width - 10, height - 10);
-          ctx.fillStyle = '#F6F3EC';
-          ctx.font = '700 ' + Math.round(step * 0.34) + 'px "Be Vietnam Pro", sans-serif';
+          ctx.lineWidth = Math.max(2, width * 0.02);
+          ctx.strokeRect(4, 4, width - 8, height - 8);
+          ctx.strokeStyle = accent;
+          ctx.lineWidth = 1.2;
+          ctx.strokeRect(8, 8, width - 16, height - 16);
+
+          // Hand-painted sidewalk block lettering with 3D offset shadow
+          const fontSize = Math.max(10, Math.round(step * 0.32));
+          ctx.font = '800 ' + fontSize + 'px "Be Vietnam Pro", sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          for (let y = step * 0.62; y < height; y += step) ctx.fillText('SÀI GÒN 1957', width / 2, y);
-        } else if (patternId === 'gomsu') {
-          ctx.strokeStyle = accent;
-          ctx.lineWidth = 2.2;
-          for (let y = step * 0.45; y < height + step; y += step * 0.7) {
-            for (let x = 0; x < width + step; x += step) {
-              ctx.beginPath(); ctx.arc(x, y, step * 0.46, Math.PI, 0, false); ctx.stroke();
-              ctx.beginPath(); ctx.arc(x, y, step * 0.28, Math.PI, 0, false); ctx.stroke();
+          for (let y = step * 0.63; y < height; y += step) {
+            ctx.fillStyle = '#18181B';
+            ctx.fillText('CHẮC BƯỚC · 1957', width / 2 + 2, y + 2);
+            ctx.fillStyle = '#F6F3EC';
+            ctx.fillText('CHẮC BƯỚC · 1957', width / 2, y);
+          }
+          // Chipped paint & sidewalk weather scuffs
+          ctx.fillStyle = 'rgba(246,243,236,0.28)';
+          for (let k = 0; k < 28; k++) {
+            ctx.fillRect(hashRand(k * 19) * width, hashRand(k * 37) * height, 6 + hashRand(k) * 14, 2);
+          }
+        } else if (patternId === 'graffiti') {
+          // 4. XỊT SƠN GRAFFITI THÔ RÁP (Raw Aerosol Spray Mist, Tag Strokes & Paint Drips)
+          // Stippled spray-can overspray cloud
+          const mistDots = Math.round(220 * scaleFactor);
+          for (let d = 0; d < mistDots; d++) {
+            const dx = hashRand(d * 11 + 3) * width;
+            const dy = hashRand(d * 23 + 7) * height;
+            const dr = 0.8 + hashRand(d * 41) * 2.4;
+            ctx.fillStyle = (d % 5 === 0) ? '#FFFFFF' : accent;
+            ctx.globalAlpha = 0.25 + hashRand(d * 19) * 0.65;
+            ctx.beginPath();
+            ctx.arc(dx, dy, dr, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.globalAlpha = 1;
+
+          // Bold raw aerosol tag slashes & street drips
+          for (let y = step * 0.35; y < height; y += step * 0.72) {
+            ctx.strokeStyle = accent;
+            ctx.lineWidth = Math.max(3, step * 0.14);
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.beginPath();
+            for (let x = 6; x <= width - 6; x += step * 0.30) {
+              const dy = ((Math.round(x / (step * 0.30))) % 2 === 0) ? -step * 0.22 : step * 0.22;
+              if (x === 6) ctx.moveTo(x, y + dy); else ctx.lineTo(x, y + dy);
+            }
+            ctx.stroke();
+
+            // Gravity spray drips hanging from tag peaks
+            ctx.lineWidth = Math.max(1.5, step * 0.05);
+            for (let x = 14; x < width - 10; x += step * 0.45) {
+              const dripLen = step * (0.25 + hashRand(x + y) * 0.38);
+              ctx.beginPath();
+              ctx.moveTo(x, y);
+              ctx.lineTo(x, y + dripLen);
+              ctx.stroke();
+              ctx.fillStyle = accent;
+              ctx.beginPath();
+              ctx.arc(x, y + dripLen, Math.max(1.8, step * 0.045), 0, Math.PI * 2);
+              ctx.fill();
             }
           }
         } else if (patternId === 'dongho') {
-          for (let y = 0; y < height + step; y += step) {
-            for (let x = 0; x < width + step; x += step) {
-              const cx = x + step / 2, cy = y + step / 2;
-              ctx.strokeStyle = accent;
-              ctx.lineWidth = 2.4;
-              ctx.beginPath(); ctx.arc(cx, cy, step * 0.36, 0, Math.PI * 1.65); ctx.stroke();
-              ctx.fillStyle = '#F6F3EC';
-              ctx.beginPath();
-              ctx.moveTo(cx, cy - step * 0.14); ctx.lineTo(cx + step * 0.14, cy);
-              ctx.lineTo(cx, cy + step * 0.14); ctx.lineTo(cx - step * 0.14, cy);
-              ctx.closePath(); ctx.fill();
-            }
+          // 5. BẠT DỨA CÔNG XƯỞNG (Iconic Vietnamese Striped Woven Tarp & Crate Stencil)
+          const stripeW = Math.max(12, Math.round(step * 0.36));
+          for (let x = 0; x < width; x += stripeW * 3) {
+            ctx.fillStyle = '#F6F3EC';
+            ctx.fillRect(x + stripeW, 0, stripeW, height);
+            ctx.fillStyle = accent;
+            ctx.fillRect(x + stripeW * 2, 0, stripeW, height);
+          }
+          // Interlaced plastic tarp cross-weave ribs
+          ctx.strokeStyle = 'rgba(0,0,0,0.18)';
+          ctx.lineWidth = 1;
+          for (let y = 0; y < height; y += 5) {
+            ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
+          }
+          for (let x = 0; x < width; x += 5) {
+            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
           }
         } else if (patternId === 'mayrong') {
-          ctx.strokeStyle = accent;
-          ctx.lineWidth = 2.4;
-          for (let row = 0; row * (step * 0.48) < height + step; row++) {
-            const y = row * (step * 0.48), offset = (row % 2) * (step * 0.5);
-            for (let x = -step; x < width + step; x += step) {
-              ctx.beginPath(); ctx.arc(x + offset, y, step * 0.46, 0, Math.PI, false); ctx.stroke();
-            }
+          // 6. XI MĂNG & PHẤN VỈA HÈ (Troweled Concrete Grain, Hairline Cracks & Chalk Marks)
+          // Concrete aggregate speckle
+          for (let p = 0; p < 180; p++) {
+            ctx.fillStyle = (p % 2 === 0) ? 'rgba(255,255,255,0.18)' : 'rgba(0,0,0,0.22)';
+            ctx.fillRect(hashRand(p * 17) * width, hashRand(p * 31) * height, 2.5, 2.5);
           }
-        } else if (patternId === 'graffiti') {
+          // Sidewalk chalk strokes & jagged pavement cracks
           ctx.strokeStyle = accent;
-          ctx.lineWidth = 3.5;
-          for (let y = step * 0.3; y < height; y += step * 0.75) {
+          ctx.lineWidth = 2.6;
+          ctx.setLineDash([8, 4, 2, 4]);
+          for (let y = step * 0.4; y < height; y += step * 0.65) {
             ctx.beginPath();
-            for (let x = 0; x <= width; x += step * 0.32) {
-              const dy = ((Math.round(x / (step * 0.32))) % 2 === 0) ? -step * 0.2 : step * 0.2;
-              if (x === 0) ctx.moveTo(x, y + dy); else ctx.lineTo(x, y + dy);
-            }
+            ctx.moveTo(0, y);
+            ctx.quadraticCurveTo(width * 0.5, y - step * 0.25, width, y + step * 0.1);
             ctx.stroke();
           }
+          ctx.setLineDash([]);
         } else if (patternId === 'y2k') {
-          ctx.strokeStyle = accent;
+          // 7. BĂNG KEO & DẤU KCS (Industrial Cloth Tape & Factory QC Ink Stamp)
+          const bandH = Math.max(18, Math.round(step * 0.48));
+          for (let y = 0; y < height; y += bandH * 2) {
+            ctx.fillStyle = accent;
+            ctx.fillRect(0, y, width, bandH * 0.55);
+            // Diagonal workshop caution hashes
+            ctx.strokeStyle = '#18181B';
+            ctx.lineWidth = Math.max(2, bandH * 0.18);
+            for (let x = -bandH; x < width + bandH; x += bandH * 0.6) {
+              ctx.beginPath();
+              ctx.moveTo(x, y);
+              ctx.lineTo(x + bandH * 0.4, y + bandH * 0.55);
+              ctx.stroke();
+            }
+          }
+          // Circular KCS 1957 stamp rings
+          ctx.strokeStyle = '#F6F3EC';
+          ctx.lineWidth = 2;
+          for (let y = step * 0.6; y < height; y += step) {
+            ctx.beginPath();
+            ctx.arc(width * 0.5, y, step * 0.28, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        } else {
+          // 8. VẢI BẠT THÔ NGUYÊN BẢN (Heavy Unbleached 1957 Cotton Duck & Double Lockstitch)
+          ctx.strokeStyle = 'rgba(255,255,255,0.24)';
           ctx.lineWidth = 1.5;
-          for (let x = 0; x < width; x += step * 0.5) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke(); }
-          for (let y = 0; y < height; y += step * 0.5) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke(); }
+          for (let y = -height; y < height * 2; y += 7) {
+            ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y + width * 0.15); ctx.stroke();
+          }
+          ctx.strokeStyle = accent;
+          ctx.lineWidth = Math.max(2.2, width * 0.038);
+          ctx.setLineDash([7, 4]);
+          ctx.strokeRect(width * 0.08, 0, width * 0.84, height);
+          ctx.setLineDash([]);
         }
 
         ctx.restore();
@@ -1532,9 +1795,34 @@
 
         ctx.fillStyle = themeObj.border;
         ctx.font = '700 20px "Be Vietnam Pro", sans-serif';
-        const sig = (config.signature || 'KẺ NÉT TỰ DO').toUpperCase();
+        const sig = (config.signature || 'CHẮC BƯỚC CHẤT THẬT').toUpperCase();
         ctx.fillText(sig.slice(0, 18), 128, 162);
 
+        return c;
+      }
+
+      function createHeelCollarCanvas(config) {
+        const c = document.createElement('canvas');
+        c.width = 256; c.height = 128;
+        const ctx = c.getContext('2d');
+        const bgHex = config.heelTabColor || '#1E3A5F';
+        ctx.fillStyle = bgHex;
+        ctx.fillRect(0, 0, 256, 128);
+
+        // Subtle leather/canvas border stitch
+        ctx.strokeStyle = 'rgba(255,255,255,0.28)';
+        ctx.lineWidth = 3;
+        ctx.setLineDash([6, 4]);
+        ctx.strokeRect(8, 8, 240, 112);
+        ctx.setLineDash([]);
+
+        // Authentic "THUONG DINH ®" heel collar print (matches reference photo!)
+        const isLightBg = (bgHex.toLowerCase() === '#f4efe4' || bgHex.toLowerCase() === '#cbd5e1');
+        ctx.fillStyle = isLightBg ? '#B91C1C' : (bgHex.toLowerCase() === '#18181b' ? '#EA580C' : '#FFFFFF');
+        ctx.font = '800 24px "Be Vietnam Pro", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('THUONG DINH ®', 128, 66);
         return c;
       }
 
@@ -1547,6 +1835,9 @@
       let stripeMaterials = [];
       let soleMaterials = [];
       let foxingMaterials = [];
+      let toeHeelMaterials = [];
+      let heelCollarMaterial = null;
+      let heelCollarTexture = null;
       let pinstripeMaterials = [];
       let laceMaterials = [];
       let tongueMaterial = null;
@@ -1567,41 +1858,44 @@
       }
 
       function getLastMetrics(u) {
+        const clampedU = Math.max(0, Math.min(1, u));
         const L = 3.22;
-        const x = (u - 0.5) * L;
-        const zCenter = 0.032 * Math.sin(u * Math.PI) + 0.022 * Math.sin(u * Math.PI * 2);
+        const x = (clampedU - 0.5) * L;
+        const zCenter = 0.032 * Math.sin(clampedU * Math.PI) + 0.022 * Math.sin(clampedU * Math.PI * 2);
 
+        // halfW tapers all the way to 0.0 at u = 0.0 (rear heel apex) and u = 1.0 (front toe apex)
+        // so both the front toe and rear heel form 100% solid, closed, watertight 3D domes with zero holes!
         let halfW;
-        if (u < 0.12) {
-          const t = u / 0.12;
-          halfW = 0.10 + 0.35 * Math.sqrt(Math.max(0, 1 - Math.pow(1 - t, 2)));
-        } else if (u < 0.44) {
-          const t = (u - 0.12) / 0.32;
+        if (clampedU < 0.14) {
+          const t = clampedU / 0.14;
+          halfW = 0.45 * Math.pow(Math.sin(t * (Math.PI / 2)), 0.68);
+        } else if (clampedU < 0.44) {
+          const t = (clampedU - 0.14) / 0.30;
           halfW = 0.45 - 0.055 * Math.sin(t * Math.PI);
-        } else if (u < 0.74) {
-          const t = (u - 0.44) / 0.30;
-          halfW = 0.415 + 0.125 * Math.sin(t * Math.PI * 0.82);
+        } else if (clampedU < 0.72) {
+          const t = (clampedU - 0.44) / 0.28;
+          halfW = 0.415 + 0.115 * Math.sin(t * Math.PI * 0.82);
         } else {
-          const t = (u - 0.74) / 0.26;
-          halfW = 0.505 * Math.sqrt(Math.max(0.015, 1 - Math.pow(t, 1.85)));
+          const t = (clampedU - 0.72) / 0.28;
+          halfW = 0.505 * Math.pow(Math.cos(t * (Math.PI / 2)), 0.68);
         }
 
-        const toeSpring = u > 0.68 ? 0.11 * Math.pow((u - 0.68) / 0.32, 2.05) : 0;
-        const heelLift = u < 0.08 ? 0.016 * Math.pow((0.08 - u) / 0.08, 2) : 0;
+        const toeSpring = clampedU > 0.68 ? 0.11 * Math.pow((clampedU - 0.68) / 0.32, 2.05) : 0;
+        const heelLift = clampedU < 0.08 ? 0.016 * Math.pow((0.08 - clampedU) / 0.08, 2) : 0;
         const yBottom = toeSpring + heelLift;
-        const foxingH = 0.235 + (u > 0.78 ? 0.032 * smoothstep(0.78, 0.96, u) : 0);
+        const foxingH = 0.235 + (clampedU > 0.78 ? 0.032 * smoothstep(0.78, 0.96, clampedU) : 0);
 
         let upperH;
-        if (u < 0.42) {
-          const ankleScoop = 0.28 * Math.exp(-Math.pow((u - 0.24) / 0.11, 2));
-          const heelRounding = u < 0.06 ? 0.08 * Math.pow((0.06 - u) / 0.06, 2) : 0;
+        if (clampedU < 0.42) {
+          const ankleScoop = 0.26 * Math.exp(-Math.pow((clampedU - 0.25) / 0.105, 2));
+          const heelRounding = clampedU < 0.04 ? 0.04 * Math.pow((0.04 - clampedU) / 0.04, 2) : 0;
           upperH = 0.85 - ankleScoop - heelRounding;
-        } else if (u < 0.77) {
-          const t = smoothstep(0.42, 0.77, u);
-          upperH = 0.85 * (1 - t) + 0.36 * t;
+        } else if (clampedU < 0.76) {
+          const t = smoothstep(0.42, 0.76, clampedU);
+          upperH = 0.85 * (1 - t) + 0.37 * t;
         } else {
-          const t = (u - 0.77) / 0.23;
-          upperH = 0.36 * Math.sqrt(Math.max(0.18, 1 - Math.pow(t, 1.65)));
+          const t = (clampedU - 0.76) / 0.24;
+          upperH = foxingH * 0.88 + (0.37 - foxingH * 0.88) * Math.cos(t * (Math.PI / 2));
         }
 
         return { x: x, zCenter: zCenter, halfW: halfW, yBottom: yBottom, foxingH: foxingH, upperH: upperH };
@@ -1643,7 +1937,10 @@
           cx /= (vCount + 1); cy /= (vCount + 1); cz /= (vCount + 1);
           positions.push(cx, cy, cz);
           uvs.push(0.5, 0.5);
-          for (let j = 0; j < vCount; j++) indices.push(centerIdx, j + 1, j);
+          for (let j = 0; j < vCount; j++) {
+            indices.push(centerIdx, j + 1, j);
+            indices.push(centerIdx, j, j + 1);
+          }
         }
 
         if (closeFrontCap) {
@@ -1657,7 +1954,10 @@
           positions.push(cx, cy, cz);
           uvs.push(0.5, 0.5);
           const base = uCount * stride;
-          for (let j = 0; j < vCount; j++) indices.push(centerIdx, base + j, base + j + 1);
+          for (let j = 0; j < vCount; j++) {
+            indices.push(centerIdx, base + j, base + j + 1);
+            indices.push(centerIdx, base + j + 1, base + j);
+          }
         }
 
         const geo = new THREE.BufferGeometry();
@@ -1670,11 +1970,11 @@
 
       function getUpperWallPoint(u, side, hFrac, outwardOffset) {
         const m = getLastMetrics(u);
-        const y0 = m.yBottom + m.foxingH * 0.92;
+        const y0 = m.yBottom + m.foxingH * 0.90;
         const y1 = m.yBottom + m.upperH;
         const y = y0 + (y1 - y0) * hFrac;
-        const topNarrow = 1.0 - 0.24 * Math.pow(hFrac, 1.35);
-        const belly = 1.0 + 0.06 * Math.sin(hFrac * Math.PI);
+        const topNarrow = 1.0 - 0.22 * Math.pow(hFrac, 1.35);
+        const belly = 1.0 + 0.05 * Math.sin(hFrac * Math.PI);
         const zHalf = m.halfW * topNarrow * belly + (outwardOffset || 0);
         return { x: m.x, y: y, z: m.zCenter + side * zHalf };
       }
@@ -1682,15 +1982,20 @@
       function createSculptedSneakerInstance(Materials) {
         const sneaker = new THREE.Group();
 
-        const uSteps = 56;
+        // 1. FULL-LENGTHWATERTIGHT FOXING, OUTSOLE & PINSTRIPE (u = 0.0 to 1.0)
+        // Because u runs from 0.0 to 1.0 and halfW(0) = 0, halfW(1) = 0,
+        // both the front nose and rear heel of the sole are 100% closed with zero holes.
+        const uSteps = 64;
         const vSteps = 36;
         const foxingRings = [];
         const outsoleRings = [];
         const pinstripeRings = [];
 
         for (let i = 0; i <= uSteps; i++) {
-          const u = 0.01 + 0.98 * (i / uSteps);
+          const u = i / uSteps;
           const m = getLastMetrics(u);
+          const endPinch = Math.sin(u * Math.PI);
+          const endBulge = Math.pow(endPinch, 0.18);
           const fRing = [], oRing = [], pRing = [];
 
           for (let j = 0; j <= vSteps; j++) {
@@ -1699,9 +2004,31 @@
             const cosT = Math.cos(theta);
             const sinT = Math.sin(theta);
 
-            fRing.push({ x: m.x, y: (m.yBottom + m.foxingH * 0.52) + sinT * (m.foxingH * 0.50), z: m.zCenter + cosT * (m.halfW * 1.03), u: u * 2, v: v });
-            oRing.push({ x: m.x, y: (m.yBottom + 0.05) + sinT * 0.065, z: m.zCenter + cosT * (m.halfW * 0.99), u: u, v: v });
-            pRing.push({ x: m.x, y: (m.yBottom + m.foxingH * 0.86) + sinT * 0.016, z: m.zCenter + cosT * (m.halfW * 1.038), u: u, v: v });
+            // Slight axial rounding at u=0 and u=1 so the front toe and rear heel curve smoothly in 3D
+            const axialCurve = (u > 0.92 ? 0.018 * Math.sin(theta * 0.5) * ((u - 0.92) / 0.08) : 0) -
+                               (u < 0.08 ? 0.016 * Math.sin(theta * 0.5) * ((0.08 - u) / 0.08) : 0);
+
+            fRing.push({
+              x: m.x + axialCurve,
+              y: (m.yBottom + m.foxingH * 0.52) + sinT * (m.foxingH * 0.50 * (0.4 + 0.6 * endBulge)),
+              z: m.zCenter + cosT * (m.halfW * 1.035),
+              u: u * 2,
+              v: v
+            });
+            oRing.push({
+              x: m.x + axialCurve * 0.8,
+              y: (m.yBottom + 0.05) + sinT * (0.065 * (0.35 + 0.65 * endBulge)),
+              z: m.zCenter + cosT * (m.halfW * 1.00),
+              u: u,
+              v: v
+            });
+            pRing.push({
+              x: m.x + axialCurve,
+              y: (m.yBottom + m.foxingH * 0.86) + sinT * 0.016,
+              z: m.zCenter + cosT * (m.halfW * 1.042),
+              u: u,
+              v: v
+            });
           }
           foxingRings.push(fRing);
           outsoleRings.push(oRing);
@@ -1710,25 +2037,27 @@
 
         sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(foxingRings, true, true), Materials.foxingMat));
         sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(outsoleRings, true, true), Materials.soleMat));
-        sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(pinstripeRings, false, false), Materials.pinstripeMat));
+        sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(pinstripeRings, true, true), Materials.pinstripeMat));
 
-        // Seamless wrap-around ribbed front toe bumper hugging the foxing wall (no notch or gap)
+        // 2. CLOSED 360° RIBBED FRONT TOE BUMPER (Viền cao su mũi sò, u = 0.75 .. 1.0)
+        // Uses full closed loop (theta = 0 .. 2*PI) and reaches u = 1.0 (halfW = 0) so both left and right sides are completely closed!
         const bumperRings = [];
-        for (let i = 0; i <= 24; i++) {
-          const u = 0.76 + 0.23 * (i / 24);
+        for (let i = 0; i <= 28; i++) {
+          const u = 0.75 + 0.25 * (i / 28);
           const m = getLastMetrics(u);
+          const tipTaper = 1 - Math.pow((u - 0.75) / 0.25, 2.2) * 0.45;
           const ring = [];
-          for (let j = 0; j <= 28; j++) {
-            const v = j / 28;
-            const theta = (v - 0.5) * Math.PI * 1.05;
+          for (let j = 0; j <= 32; j++) {
+            const v = j / 32;
+            const theta = v * Math.PI * 2;
             const cosT = Math.cos(theta);
             const sinT = Math.sin(theta);
-            const rib = 0.006 * Math.sin(i * 2.2);
+            const rib = (u < 0.995 ? 0.005 * Math.sin(i * 2.2) : 0);
             ring.push({
-              x: m.x + 0.008,
-              y: (m.yBottom + m.foxingH * 0.50) + sinT * (m.foxingH * 0.49),
-              z: m.zCenter + cosT * (m.halfW * 1.042 + rib),
-              u: i / 24,
+              x: m.x + 0.010 * Math.sin(v * Math.PI),
+              y: (m.yBottom + m.foxingH * 0.50) + sinT * (m.foxingH * 0.50 * tipTaper),
+              z: m.zCenter + cosT * (m.halfW > 0.001 ? (m.halfW * 1.048 + rib) : 0),
+              u: i / 28,
               v: v
             });
           }
@@ -1736,74 +2065,103 @@
         }
         sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(bumperRings, true, false), Materials.soleMat));
 
+        // 3. SOLID, WATERTIGHT 3D SUEDE TOE CAP ("Mũi giày", u = 0.67 .. 1.0)
+        // Extends all the way to u = 1.0 where halfW = 0 and uses a full closed cross-section tucked into the foxing!
         const toeCapRings = [];
-        for (let i = 0; i <= 20; i++) {
-          const u = 0.75 + 0.235 * (i / 20);
+        for (let i = 0; i <= 28; i++) {
+          const u = 0.67 + 0.33 * (i / 28);
           const m = getLastMetrics(u);
           const ring = [];
-          for (let j = 0; j <= 24; j++) {
-            const v = j / 24;
-            const archAngle = v * Math.PI;
-            const yBase = m.yBottom + m.foxingH * 0.88;
-            const domeH = (m.upperH - m.foxingH * 0.88) * 1.04;
-            ring.push({ x: m.x, y: yBase + Math.sin(archAngle) * domeH, z: m.zCenter + Math.cos(archAngle) * (m.halfW * 1.01), u: i / 20, v: v });
+          const yBase = m.yBottom + m.foxingH * 0.78;
+          const domeH = Math.max(0.04, (m.upperH - m.foxingH * 0.75) * 1.06);
+          for (let j = 0; j <= 32; j++) {
+            const v = j / 32;
+            const theta = v * Math.PI * 2;
+            const cosT = Math.cos(theta);
+            const sinT = Math.sin(theta);
+            const yOffset = sinT >= 0 ? (sinT * domeH) : (sinT * 0.04);
+            ring.push({
+              x: m.x + 0.008 * Math.max(0, sinT),
+              y: yBase + yOffset,
+              z: m.zCenter + cosT * (m.halfW > 0.001 ? (m.halfW * 1.026) : 0),
+              u: i / 28,
+              v: v
+            });
           }
           toeCapRings.push(ring);
         }
-        sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(toeCapRings, true, false), Materials.foxingMat));
+        sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(toeCapRings, true, false), Materials.toeHeelMat));
 
+        // 4. SOLID UPPER CANVAS BODY WITH CLOSED REAR HEEL DOME ("Gót giày", u = 0.0 .. 0.76)
+        // Starts at u = 0.0 (where halfW = 0) and restricts the ankle opening strictly to u in [0.09, 0.42].
+        // At the rear heel (u = 0.0 .. 0.08), ankleOpenRatio = 0 so the back heel forms a 100% solid, closed 3D dome!
         const upperRings = [];
-        for (let i = 0; i <= 52; i++) {
-          const u = 0.02 + 0.76 * (i / 52);
+        for (let i = 0; i <= 60; i++) {
+          const u = 0.76 * (i / 60);
           const m = getLastMetrics(u);
           const ring = [];
-          const openRatio = 1 - smoothstep(0.60, 0.72, u);
+
+          // Ankle opening only between u = 0.08 and u = 0.43; Throat opening between u = 0.43 and u = 0.68
+          let cavityFactor = 0;
+          if (u > 0.075 && u < 0.43) {
+            cavityFactor = smoothstep(0.075, 0.13, u) * (1 - smoothstep(0.37, 0.43, u)) * 0.36;
+          } else if (u >= 0.43 && u < 0.70) {
+            cavityFactor = (1 - smoothstep(0.60, 0.70, u)) * 0.25;
+          }
 
           for (let j = 0; j <= 32; j++) {
             const v = j / 32;
             const angle = v * Math.PI;
             const cosA = Math.cos(angle);
             const sinA = Math.sin(angle);
-            const yBase = m.yBottom + m.foxingH * 0.85;
-            const maxH = m.upperH - m.foxingH * 0.85;
-            const cavityDip = openRatio * Math.pow(sinA, 3.2) * 0.36;
+            const yBase = m.yBottom + m.foxingH * 0.80;
+            const maxH = Math.max(0.08, m.upperH - m.foxingH * 0.80);
+            const cavityDip = cavityFactor * Math.pow(sinA, 2.8);
             const widthTaper = 1.0 - 0.20 * Math.pow(sinA, 1.4);
-            ring.push({ x: m.x, y: yBase + sinA * maxH - cavityDip, z: m.zCenter + cosA * (m.halfW * widthTaper), u: (u / 0.78) * 2.2, v: v * 2.0 });
+            ring.push({
+              x: m.x,
+              y: yBase + sinA * maxH - cavityDip,
+              z: m.zCenter + cosA * (m.halfW * widthTaper),
+              u: (u / 0.76) * 2.2,
+              v: v * 2.0
+            });
           }
           upperRings.push(ring);
         }
-        sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(upperRings, false, true), Materials.upperMat));
+        sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(upperRings, true, true), Materials.upperMat));
 
+        // 5. FULL-LENGTH CUSHIONED SOCKLINER / INSOLE FLOOR (u = 0.02 .. 0.75)
         const insoleRings = [];
-        for (let i = 0; i <= 20; i++) {
-          const u = 0.05 + 0.55 * (i / 20);
+        for (let i = 0; i <= 28; i++) {
+          const u = 0.02 + 0.73 * (i / 28);
           const m = getLastMetrics(u);
           const ring = [];
-          for (let j = 0; j <= 12; j++) {
-            const v = j / 12;
-            ring.push({ x: m.x, y: m.yBottom + m.foxingH + 0.08, z: m.zCenter + (v - 0.5) * 2 * (m.halfW * 0.68), u: i / 20, v: v });
+          for (let j = 0; j <= 14; j++) {
+            const v = j / 14;
+            ring.push({
+              x: m.x,
+              y: m.yBottom + m.foxingH + 0.06,
+              z: m.zCenter + (v - 0.5) * 2 * (m.halfW * 0.86),
+              u: i / 28,
+              v: v
+            });
           }
           insoleRings.push(ring);
         }
-        sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(insoleRings, false, false), new THREE.MeshStandardMaterial({ color: 0xe8dec8, roughness: 0.85 })));
+        sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(insoleRings, true, true), new THREE.MeshStandardMaterial({ color: 0xe8dec8, roughness: 0.85, side: THREE.DoubleSide })));
 
+        // Padded Ankle Collar Rim around u = 0.05 .. 0.41
         const collarPts = [];
-        for (let i = 0; i <= 28; i++) {
-          const t = (i / 28) * Math.PI * 2;
-          const u = 0.225 - 0.195 * Math.cos(t);
+        for (let i = 0; i <= 32; i++) {
+          const t = (i / 32) * Math.PI * 2;
+          const u = 0.23 - 0.175 * Math.cos(t);
           const m = getLastMetrics(u);
-          collarPts.push(new THREE.Vector3(m.x, m.yBottom + m.upperH - 0.02, m.zCenter + Math.sin(t) * (m.halfW * 0.76)));
+          collarPts.push(new THREE.Vector3(m.x, m.yBottom + m.upperH - 0.015, m.zCenter + Math.sin(t) * (m.halfW * 0.78)));
         }
         sneaker.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(collarPts, true), 48, 0.038, 12, true), Materials.upperMat));
 
         // ===================================================================
         // TWO AUTHENTIC THƯỢNG ĐÌNH STRIPE VERSIONS (Selectable by User)
-        // - Version 1 (v1_cross): Classic White Bata w/ Blue Stripes (Left photo)
-        //   Long sweeping curve from upper heel counter down-forward to forefoot
-        //   INTERSECTED by 2 parallel forward-slanted bars from eyestay to sole.
-        // - Version 2 (v2_arch): Black Canvas w/ Red-Orange Stripes (Right photo)
-        //   Curved wing arch sweeping from eyestay back to rear midsole +
-        //   2 distinct vertical/angled pillars dropping from eyestay to sole.
         // ===================================================================
         function createConformalBarStripeMesh(uBottomStart, uTopEnd, stripeWidthU, hMin, hMax, sideSign, zOff) {
           const sRings = [];
@@ -1834,7 +2192,7 @@
             const ring = [];
             for (let iw = 0; iw <= 8; iw++) {
               const wFrac = (iw / 8) - 0.5;
-              const u = Math.max(0.03, Math.min(0.75, uCenter - wFrac * thickU));
+              const u = Math.max(0.04, Math.min(0.74, uCenter - wFrac * thickU));
               const h = Math.max(0.03, Math.min(0.93, hCenter + wFrac * halfH));
               const pt = getUpperWallPoint(u, sideSign, h, zOff || 0.013);
               ring.push({ x: pt.x, y: pt.y, z: pt.z, u: iw / 8, v: t });
@@ -1846,27 +2204,19 @@
 
         const v1Group = new THREE.Group();
         const v2Group = new THREE.Group();
-        const wovenTagMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.55 });
+        const wovenTagMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.55, side: THREE.DoubleSide });
 
         [-1, 1].forEach(function (sideSign) {
-          // --- VERSION 1 (v1_cross): Classic Bata Trắng Sọc Xanh ---
-          // 1A. Long sweeping curve from high heel (u=0.04, h=0.72) dipping through midfoot (u=0.33, h=0.42) to forefoot sole edge (u=0.66, h=0.06)
           const v1SweepGeo = createBezierConformalRibbonMesh(
-            { u: 0.04, h: 0.72 },
+            { u: 0.06, h: 0.72 },
             { u: 0.34, h: 0.44 },
             { u: 0.66, h: 0.06 },
             0.13, 0.11, 0.018, sideSign, 0.0125
           );
           v1Group.add(new THREE.Mesh(v1SweepGeo, Materials.stripeMat));
-
-          // 1B. Two parallel forward-slanted bars crossing through the sweeping curve
-          // Bar 1 (rear slanted): top near collar/eyestay (u=0.35, h=0.84) -> bottom sole (u=0.47, h=0.03)
           v1Group.add(new THREE.Mesh(createConformalBarStripeMesh(0.47, 0.35, 0.042, 0.03, 0.84, sideSign, 0.014), Materials.stripeMat));
-          // Bar 2 (front slanted): top eyestay (u=0.47, h=0.84) -> bottom sole (u=0.59, h=0.03)
           v1Group.add(new THREE.Mesh(createConformalBarStripeMesh(0.59, 0.47, 0.042, 0.03, 0.84, sideSign, 0.014), Materials.stripeMat));
 
-          // --- VERSION 2 (v2_arch): Sọc Cánh Cung & 2 Trụ Đứng (Đen Sọc Đỏ Cam) ---
-          // 2A. Sweeping wing arch from eyestay (u=0.45, h=0.85) curving down-back to lower heel quarter (u=0.10, h=0.14)
           const v2ArchGeo = createBezierConformalRibbonMesh(
             { u: 0.10, h: 0.14 },
             { u: 0.29, h: 0.32 },
@@ -1874,14 +2224,9 @@
             0.12, 0.14, 0.022, sideSign, 0.013
           );
           v2Group.add(new THREE.Mesh(v2ArchGeo, Materials.stripeMat));
-
-          // 2B. Two distinct vertical/slightly slanted pillars under eyestay with clean gap
-          // Pillar 1 (meets the top of the arch at u=0.47, drops to u=0.48 at sole)
           v2Group.add(new THREE.Mesh(createConformalBarStripeMesh(0.48, 0.46, 0.046, 0.03, 0.85, sideSign, 0.014), Materials.stripeMat));
-          // Pillar 2 (cleanly separated in front at u=0.57 -> u=0.59 at sole)
           v2Group.add(new THREE.Mesh(createConformalBarStripeMesh(0.59, 0.56, 0.046, 0.03, 0.82, sideSign, 0.014), Materials.stripeMat));
 
-          // Authentic white woven 'THUONG DINH' eyestay label tab on both versions
           const tagRings = [];
           for (let is = 0; is <= 6; is++) {
             const u = 0.49 + (is / 6) * 0.075;
@@ -1901,20 +2246,44 @@
         stripeV1Groups.push(v1Group);
         stripeV2Groups.push(v2Group);
 
-        const heelTabRings = [];
-        for (let ih = 0; ih <= 14; ih++) {
-          const hFrac = 0.02 + 0.94 * (ih / 14);
-          const m = getLastMetrics(0.025);
-          const y = (m.yBottom + m.foxingH * 0.90) + (m.upperH - m.foxingH * 0.90 - 0.02) * hFrac;
-          const ring = [];
-          for (let iw = 0; iw <= 8; iw++) {
-            const ang = ((iw / 8) - 0.5) * 0.55;
-            const r = m.halfW * (1.0 - 0.18 * hFrac) + 0.012;
-            ring.push({ x: m.x - Math.cos(ang) * 0.05, y: y, z: m.zCenter + Math.sin(ang) * r, u: iw / 8, v: ih / 14 });
+        // ===================================================================
+        // SOLID 2-PART REAR HEEL CONSTRUCTION ("Gót giày" — Zero Gap / Zero Hole)
+        // Wraps seamlessly from left side (u=0.17, side=-1) through rear apex (u=0.0)
+        // to right side (u=0.17, side=+1) using getUpperWallPoint + radial outward offset.
+        // ===================================================================
+        function buildHeelWrapGeometry(uMax, hStart, hEnd, radialOffset, flipV) {
+          const rings = [];
+          const hSteps = 14;
+          const wSteps = 28;
+          for (let ih = 0; ih <= hSteps; ih++) {
+            const vFrac = ih / hSteps;
+            const hFrac = hStart + (hEnd - hStart) * vFrac;
+            const ring = [];
+            for (let iw = 0; iw <= wSteps; iw++) {
+              const wFrac = iw / wSteps;
+              const s = (wFrac - 0.5) * 2; // -1 (left) .. 0 (rear center u=0) .. +1 (right)
+              const sideSign = s < 0 ? -1 : 1;
+              const u = Math.pow(Math.abs(s), 1.25) * uMax;
+              const basePt = getUpperWallPoint(u, sideSign, hFrac, 0);
+              const ang = s * (Math.PI / 2);
+              ring.push({
+                x: basePt.x - Math.cos(ang) * radialOffset,
+                y: basePt.y,
+                z: (Math.abs(s) < 0.001 ? getLastMetrics(0).zCenter : basePt.z) + Math.sin(ang) * radialOffset,
+                u: wFrac,
+                v: flipV ? (1 - vFrac) : vFrac
+              });
+            }
+            rings.push(ring);
           }
-          heelTabRings.push(ring);
+          return buildLoftedBufferGeometry(rings, false, false);
         }
-        sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(heelTabRings, false, false), Materials.stripeMat));
+
+        // Part A: Lower Suede Heel Counter Wrap (Ốp bảo vệ gót sau, u = 0..0.17, hFrac = 0.0..0.56)
+        sneaker.add(new THREE.Mesh(buildHeelWrapGeometry(0.17, 0.0, 0.56, 0.011, false), Materials.toeHeelMat));
+
+        // Part B: Upper Heel Collar Tab with "THUONG DINH ®" Print (Gáy cổ gót, u = 0..0.14, hFrac = 0.56..0.98)
+        sneaker.add(new THREE.Mesh(buildHeelWrapGeometry(0.14, 0.56, 0.98, 0.014, true), Materials.heelCollarMat));
 
         const tongueRings = [];
         const tglRings = [];
@@ -1945,7 +2314,7 @@
         sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(tongueRings, false, false), Materials.upperMat));
         sneaker.add(new THREE.Mesh(buildLoftedBufferGeometry(tglRings, false, false), Materials.tongueMat));
 
-        const eyeletMat = new THREE.MeshStandardMaterial({ color: 0xe4e4e7, metalness: 0.85, roughness: 0.22 });
+        const eyeletMat = new THREE.MeshStandardMaterial({ color: 0xe4e4e7, metalness: 0.85, roughness: 0.22, side: THREE.DoubleSide });
         const eyePtsLeft = [], eyePtsRight = [];
 
         for (let k = 0; k < 6; k++) {
@@ -2107,6 +2476,9 @@
         const tongueCanvas = createTongueLabelCanvas(state);
         tongueTexture = new THREE.CanvasTexture(tongueCanvas);
 
+        const heelCollarCanvas = createHeelCollarCanvas(state);
+        heelCollarTexture = new THREE.CanvasTexture(heelCollarCanvas);
+
         const sharedMaterials = {
           upperMat: new THREE.MeshStandardMaterial({
             map: upperTexture,
@@ -2122,10 +2494,12 @@
             metalness: 0.06,
             side: THREE.DoubleSide
           }),
-          soleMat: new THREE.MeshStandardMaterial({ color: 0xc67d3b, roughness: 0.58, metalness: 0.05 }),
-          foxingMat: new THREE.MeshStandardMaterial({ color: 0xf4efe4, roughness: 0.52, metalness: 0.04 }),
-          pinstripeMat: new THREE.MeshStandardMaterial({ color: 0xb91c1c, roughness: 0.4 }),
-          laceMat: new THREE.MeshStandardMaterial({ color: 0xf4efe4, roughness: 0.75 }),
+          soleMat: new THREE.MeshStandardMaterial({ color: 0xc67d3b, roughness: 0.58, metalness: 0.05, side: THREE.DoubleSide }),
+          foxingMat: new THREE.MeshStandardMaterial({ color: 0xf4efe4, roughness: 0.52, metalness: 0.04, side: THREE.DoubleSide }),
+          toeHeelMat: new THREE.MeshStandardMaterial({ color: 0xcbd5e1, roughness: 0.88, metalness: 0.02, side: THREE.DoubleSide }),
+          heelCollarMat: new THREE.MeshStandardMaterial({ map: heelCollarTexture, roughness: 0.55, side: THREE.DoubleSide }),
+          pinstripeMat: new THREE.MeshStandardMaterial({ color: 0xb91c1c, roughness: 0.4, side: THREE.DoubleSide }),
+          laceMat: new THREE.MeshStandardMaterial({ color: 0xf4efe4, roughness: 0.75, side: THREE.DoubleSide }),
           tongueMat: new THREE.MeshStandardMaterial({ map: tongueTexture, roughness: 0.5, side: THREE.DoubleSide })
         };
 
@@ -2133,6 +2507,8 @@
         stripeMaterials.push(sharedMaterials.stripeMat);
         soleMaterials.push(sharedMaterials.soleMat);
         foxingMaterials.push(sharedMaterials.foxingMat);
+        toeHeelMaterials.push(sharedMaterials.toeHeelMat);
+        heelCollarMaterial = sharedMaterials.heelCollarMat;
         pinstripeMaterials.push(sharedMaterials.pinstripeMat);
         laceMaterials.push(sharedMaterials.laceMat);
         tongueMaterial = sharedMaterials.tongueMat;
@@ -2202,6 +2578,11 @@
         const soleObj = SOLE_TYPES.find(s => s.id === state.soleId) || SOLE_TYPES[0];
         soleMaterials.forEach(m => m.color.set(soleObj.hex));
         foxingMaterials.forEach(m => m.color.set(soleObj.foxing));
+        toeHeelMaterials.forEach(m => m.color.set(state.toeHeelColor || '#CBD5E1'));
+        if (heelCollarTexture) {
+          heelCollarTexture.image = createHeelCollarCanvas(state);
+          heelCollarTexture.needsUpdate = true;
+        }
         pinstripeMaterials.forEach(m => m.color.set(state.stripeColor));
 
         laceMaterials.forEach(m => m.color.set(state.laceColor));
@@ -2338,12 +2719,35 @@
         ctx.fill();
         ctx.stroke();
 
-        ctx.fillStyle = soleObj.foxing;
+        // 1. Suede Toe Cap & Mudguard Overlay (Customizable toeHeelColor)
+        ctx.fillStyle = config.toeHeelColor || state.toeHeelColor || '#CBD5E1';
         ctx.beginPath();
-        ctx.moveTo(232, 75);
-        ctx.bezierCurveTo(264, 75, 288, 85, 292, 98);
-        ctx.lineTo(226, 98);
-        ctx.quadraticCurveTo(226, 84, 232, 75);
+        ctx.moveTo(226, 73);
+        ctx.bezierCurveTo(262, 73, 288, 84, 292, 98);
+        ctx.lineTo(216, 98);
+        ctx.quadraticCurveTo(216, 82, 226, 73);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        // 2. Lower Suede Heel Counter Guard at the back (Customizable toeHeelColor)
+        ctx.fillStyle = config.toeHeelColor || state.toeHeelColor || '#CBD5E1';
+        ctx.beginPath();
+        ctx.moveTo(26, 98);
+        ctx.bezierCurveTo(20, 82, 21, 66, 26, 56);
+        ctx.lineTo(54, 64);
+        ctx.quadraticCurveTo(48, 80, 50, 98);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        // 3. Upper Heel Collar Tab with "THUONG DINH" at top of heel (Customizable heelTabColor)
+        ctx.fillStyle = config.heelTabColor || state.heelTabColor || '#1E3A5F';
+        ctx.beginPath();
+        ctx.moveTo(25, 56);
+        ctx.bezierCurveTo(23, 44, 28, 35, 36, 32);
+        ctx.lineTo(52, 42);
+        ctx.quadraticCurveTo(44, 48, 44, 60);
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
@@ -2397,12 +2801,7 @@
             c.closePath();
           }
 
-          // Heel collar tab
-          c.moveTo(26, 98);
-          c.bezierCurveTo(18, 72, 24, 44, 36, 32);
-          c.lineTo(45, 38);
-          c.bezierCurveTo(34, 52, 30, 74, 36, 98);
-          c.closePath();
+
         }
 
         ctx.save();
@@ -2567,6 +2966,22 @@
           updateAll3DMaterials();
         });
 
+        renderColorSwatchRow('toeHeelColorSwatches', TOE_HEEL_COLORS, state.toeHeelColor || '#CBD5E1', function (c) {
+          state.toeHeelColor = c.hex;
+          renderStudioControls();
+          updateAll3DMaterials();
+        });
+
+        renderColorSwatchRow('heelTabColorSwatches', HEEL_TAB_COLORS, state.heelTabColor || '#1E3A5F', function (c) {
+          state.heelTabColor = c.hex;
+          state.autoRotate = false;
+          updateAutoRotateBtnUI();
+          targetRotY = 0.85;
+          targetRotX = 0.18;
+          renderStudioControls();
+          updateAll3DMaterials();
+        });
+
         const fabricGrid = document.getElementById('fabricTypeGrid');
         fabricGrid.innerHTML = '';
         FABRIC_TYPES.forEach(function (fab) {
@@ -2655,19 +3070,26 @@
         const soleObj = SOLE_TYPES.find(s => s.id === state.soleId) || SOLE_TYPES[0];
         const laceObj = LACE_COLORS.find(l => l.hex.toLowerCase() === state.laceColor.toLowerCase()) || { name: state.laceColor };
 
+        const thColorObj = TOE_HEEL_COLORS.find(c => c.hex.toLowerCase() === (state.toeHeelColor || '#CBD5E1').toLowerCase()) || { name: state.toeHeelColor };
+        const htColorObj = HEEL_TAB_COLORS.find(c => c.hex.toLowerCase() === (state.heelTabColor || '#1E3A5F').toLowerCase()) || { name: state.heelTabColor };
+
         document.getElementById('stripeColorName').textContent = sColorObj.name;
         document.getElementById('stripeAccentName').textContent = aColorObj.name;
         document.getElementById('upperColorName').textContent = uColorObj.name;
+        const thEl = document.getElementById('toeHeelColorName');
+        if (thEl) thEl.textContent = thColorObj.name;
+        const htEl = document.getElementById('heelTabColorName');
+        if (htEl) htEl.textContent = htColorObj.name;
         document.getElementById('laceColorName').textContent = laceObj.name;
 
         document.getElementById('liveDesignNameBadge').textContent = state.title || 'Bản Thiết Kế TD1957';
         document.getElementById('livePatternBadge').textContent = patObj.name;
-        document.getElementById('liveSignatureBadge').textContent = 'Tem: "' + (state.signature || 'KẺ NÉT TỰ DO') + '"';
+        document.getElementById('liveSignatureBadge').textContent = 'Tem: "' + (state.signature || 'CHẮC BƯỚC CHẤT THẬT') + '"';
         document.getElementById('miniSwatchLabel').textContent = patObj.name;
 
         document.getElementById('summaryZone1').textContent = patObj.name;
         document.getElementById('summaryZone2').textContent = soleObj.name;
-        document.getElementById('summaryZone3').textContent = state.signature || 'KẺ NÉT TỰ DO';
+        document.getElementById('summaryZone3').textContent = state.signature || 'CHẮC BƯỚC CHẤT THẬT';
       }
 
       function applyPresetToStudio(presetKey) {
@@ -3181,7 +3603,7 @@
           const specs = [
             { zone: 'VÙNG 01 · SỌC THƯỢNG ĐÌNH', val: (state.uploadedImage && state.uploadMode === 'stripe' ? 'Họa tiết Upload riêng' : patObj.name) + ' (' + stripeVerLabel + ')', color: state.stripeColor },
             { zone: 'VÙNG 02 · THÂN VẢI & ĐẾ', val: fabObj.name + ' · ' + soleObj.name, color: state.upperColor },
-            { zone: 'VÙNG 03 · DÂY & TEM DỆT', val: 'Tem lưỡi gà: "' + (state.signature || 'KẺ NÉT TỰ DO') + '"', color: state.laceColor }
+            { zone: 'VÙNG 03 · DÂY & TEM DỆT', val: 'Tem lưỡi gà: "' + (state.signature || 'CHẮC BƯỚC CHẤT THẬT') + '"', color: state.laceColor }
           ];
 
           specs.forEach(function (sp, idx) {
@@ -3213,10 +3635,10 @@
 
           ctx.fillStyle = isDarkStyle ? '#F87171' : '#171C8F';
           ctx.font = '800 16px "Be Vietnam Pro", sans-serif';
-          ctx.fillText('GẠCH BỎ GIỚI HẠN — KẺ NÉT TỰ DO', rx, 634);
+          ctx.fillText('KẺ SỌC BẢN SẮC - CHẮC BƯỚC CHẤT THẬT', rx, 634);
           ctx.fillStyle = isDarkStyle ? '#A1A1AA' : '#52525B';
           ctx.font = '600 13px "JetBrains Mono", monospace';
-          ctx.fillText('#KeSocBanSac  #KeNetTuDo  #ThuongDinh1957', rx, 658);
+          ctx.fillText('#KeSocBanSac  #ChacBuocChatThat  #ThuongDinh1957', rx, 658);
         }
         // ===================================================================
         // RATIO B: STORY 9:16 (900 x 1600)
@@ -3253,7 +3675,7 @@
           ctx.fillRect(stageX, stageY + stageH - 58, stageW, 58);
           ctx.fillStyle = '#FFFFFF';
           ctx.font = '700 14px "JetBrains Mono", monospace';
-          ctx.fillText('★ ' + stripeVerLabel.toUpperCase() + '  ·  TEM: "' + (state.signature || 'KẺ NÉT TỰ DO') + '"', stageX + 26, stageY + stageH - 23);
+          ctx.fillText('★ ' + stripeVerLabel.toUpperCase() + '  ·  TEM: "' + (state.signature || 'CHẮC BƯỚC CHẤT THẬT') + '"', stageX + 26, stageY + stageH - 23);
           ctx.textAlign = 'right';
           ctx.fillStyle = isDarkStyle ? '#FFFFFF' : '#FBBF24';
           ctx.fillText('650.000₫', stageX + stageW - 26, stageY + stageH - 23);
@@ -3287,7 +3709,7 @@
             ['01. Sọc Thượng Đình:', (state.uploadedImage && state.uploadMode === 'stripe' ? 'Ảnh Custom Upload' : patObj.name)],
             ['02. Phiên bản sọc:', stripeVerLabel],
             ['03. Thân & Đế:', fabObj.name + ' · ' + soleObj.name],
-            ['04. Chữ ký lưỡi gà:', '"' + (state.signature || 'KẺ NÉT TỰ DO') + '"']
+            ['04. Chữ ký lưỡi gà:', '"' + (state.signature || 'CHẮC BƯỚC CHẤT THẬT') + '"']
           ];
           storySpecs.forEach(function (pair, i) {
             const sy = cardY + 92 + i * 50;
@@ -3322,10 +3744,10 @@
 
           ctx.fillStyle = '#FFFFFF';
           ctx.font = '800 20px "Be Vietnam Pro", sans-serif';
-          ctx.fillText('GẠCH BỎ GIỚI HẠN — KẺ NÉT TỰ DO', 86, 1488);
+          ctx.fillText('KẺ SỌC BẢN SẮC - CHẮC BƯỚC CHẤT THẬT', 86, 1488);
           ctx.font = '600 14px "JetBrains Mono", monospace';
           ctx.fillStyle = '#E2E8F0';
-          ctx.fillText('#KeSocBanSac  ·  #KeNetTuDo  ·  #TD1957', 86, 1514);
+          ctx.fillText('#KeSocBanSac  ·  #ChacBuocChatThat  ·  #TD1957', 86, 1514);
 
           ctx.textAlign = 'right';
           ctx.fillStyle = '#FFFFFF';
@@ -3380,7 +3802,7 @@
           const infoY = 708;
           ctx.fillStyle = isDarkStyle ? '#F87171' : '#E11D2E';
           ctx.font = '700 14px "JetBrains Mono", monospace';
-          ctx.fillText('CUSTOM EDITION BY ' + (state.author || '@minh.kiet.design').toUpperCase() + '  ·  TEM LƯỠI GÀ: "' + (state.signature || 'KẺ NÉT TỰ DO') + '"', 54, infoY);
+          ctx.fillText('CUSTOM EDITION BY ' + (state.author || '@minh.kiet.design').toUpperCase() + '  ·  TEM LƯỠI GÀ: "' + (state.signature || 'CHẮC BƯỚC CHẤT THẬT') + '"', 54, infoY);
 
           ctx.fillStyle = isDarkStyle ? '#FFFFFF' : '#18181B';
           ctx.font = '800 42px "Be Vietnam Pro", sans-serif';
@@ -3403,7 +3825,7 @@
           ctx.font = '600 15px "Be Vietnam Pro", sans-serif';
           ctx.fillText('• Vùng 1 (Sọc): ' + (state.uploadedImage && state.uploadMode === 'stripe' ? 'Thiết kế tải lên riêng' : patObj.name) + ' (' + stripeVerLabel + ')', 80, boxY + 74);
           ctx.fillText('• Vùng 2 (Thân & Đế): ' + fabObj.name + ' · ' + soleObj.name, 80, boxY + 110);
-          ctx.fillText('• Vùng 3 (Chữ ký): "' + (state.signature || 'KẺ NÉT TỰ DO') + '"', 80, boxY + 146);
+          ctx.fillText('• Vùng 3 (Chữ ký): "' + (state.signature || 'CHẮC BƯỚC CHẤT THẬT') + '"', 80, boxY + 146);
 
           ctx.fillStyle = isDarkStyle ? '#F87171' : '#B91C1C';
           ctx.font = '700 13px "JetBrains Mono", monospace';
@@ -3418,12 +3840,12 @@
 
           ctx.fillStyle = isDarkStyle ? '#FFFFFF' : '#171C8F';
           ctx.font = '800 16px "Be Vietnam Pro", sans-serif';
-          ctx.fillText('GẠCH BỎ GIỚI HẠN — KẺ NÉT TỰ DO', 54, H - 52);
+          ctx.fillText('KẺ SỌC BẢN SẮC - CHẮC BƯỚC CHẤT THẬT', 54, H - 52);
 
           ctx.textAlign = 'right';
           ctx.fillStyle = isDarkStyle ? '#A1A1AA' : '#52525B';
           ctx.font = '600 14px "JetBrains Mono", monospace';
-          ctx.fillText('#KeSocBanSac  #KeNetTuDo  #TD1957', W - 54, H - 52);
+          ctx.fillText('#KeSocBanSac  #ChacBuocChatThat  #TD1957', W - 54, H - 52);
           ctx.textAlign = 'left';
         }
 
@@ -3432,7 +3854,7 @@
           captionBox.value =
             'Thiết kế 3D [' + state.title + '] (' + stripeVerLabel + ') cho dòng giày Thượng Đình TD1957.\n' +
             'Họa tiết: ' + (state.uploadedImage ? 'Custom Upload (' + state.uploadedFileName + ')' : patObj.name) + ' · Tác giả: ' + state.author + '\n' +
-            '#KeSocBanSac #KeNetTuDo #ThuongDinhHeritage #TD1957';
+            '#KeSocBanSac #ChacBuocChatThat #ThuongDinhHeritage #TD1957';
         }
       }
 
@@ -3539,6 +3961,9 @@
               patternScale: entry.patternScale || 100,
               upperColor: entry.upperColor,
               fabricId: entry.fabricId,
+              toeHeelColor: entry.toeHeelColor || '#CBD5E1',
+              heelTabColor: entry.heelTabColor || '#1E3A5F',
+              stripeVersion: entry.stripeVersion || 'v1_cross',
               soleId: entry.soleId,
               laceColor: entry.laceColor,
               tongueId: entry.tongueId
@@ -3618,6 +4043,13 @@
         }
         entry.micrositeVotes += 1;
         entry.votedByMe = true;
+        saveSharedArenaToStorage();
+        pushPayloadToCloud({ type: 'VOTE_UPDATE', entryId: entry.id, votes: entry.micrositeVotes });
+        if (arenaChannel) {
+          try {
+            arenaChannel.postMessage({ type: 'VOTE_UPDATE', entryId: entry.id, votes: entry.micrositeVotes });
+          } catch (e) {}
+        }
         renderArenaGallery();
         showToast('Đã ghi nhận bình chọn cho "' + entry.title + '"');
       }
@@ -3630,9 +4062,322 @@
         document.getElementById('otpModal').classList.remove('hidden');
       }
 
+      // ===================================================================
+      // AUTOMATIC ZERO-CODE CLOUD BACKEND PERSISTENCE + REALTIME STREAM
+      // Every design submitted by any user anywhere is saved to the Cloud Topic
+      // and automatically loaded when any other user visits the page later.
+      // ===================================================================
+      const ARENA_STORAGE_KEY = 'TD1957_LIVE_ARENA_ENTRIES_V3';
+      const CLOUD_TOPIC_ID = 'thuong_dinh_1957_ke_soc_ban_sac_cloud_db_v3';
+      const CLOUD_BASE_URL = 'https://ntfy.sh/' + CLOUD_TOPIC_ID;
+      const CLOUD_RETENTION_TTL_MS = 48 * 60 * 60 * 1000; // 2 Days (48 Hours) retention window
+      let arenaChannel = null;
+      let cloudEventSource = null;
+
+      try {
+        if (typeof BroadcastChannel !== 'undefined') {
+          arenaChannel = new BroadcastChannel('td1957_live_arena_channel_v3');
+        }
+      } catch (e) {}
+
+      function serializeEntryForSync(entry) {
+        return {
+          id: entry.id,
+          title: entry.title,
+          author: entry.author,
+          theme: entry.theme,
+          signature: entry.signature,
+          patternId: entry.patternId,
+          stripeColor: entry.stripeColor,
+          accentColor: entry.accentColor,
+          patternScale: entry.patternScale || 100,
+          upperColor: entry.upperColor,
+          toeHeelColor: entry.toeHeelColor || '#CBD5E1',
+          heelTabColor: entry.heelTabColor || '#1E3A5F',
+          fabricId: entry.fabricId,
+          soleId: entry.soleId,
+          laceColor: entry.laceColor,
+          tongueId: entry.tongueId,
+          stripeVersion: entry.stripeVersion || 'v1_cross',
+          judgeScore100: entry.judgeScore100 || 92,
+          fbLikes: entry.fbLikes || 120,
+          fbShares: entry.fbShares || 45,
+          fbComments: entry.fbComments || 38,
+          micrositeVotes: entry.micrositeVotes || 65,
+          isNewUserEntry: Boolean(entry.isNewUserEntry),
+          submittedAt: entry.submittedAt || Date.now()
+        };
+      }
+
+      function saveSharedArenaToStorage() {
+        try {
+          const serializableList = arenaEntries.map(serializeEntryForSync);
+          localStorage.setItem(ARENA_STORAGE_KEY, JSON.stringify(serializableList));
+        } catch (e) {}
+      }
+
+      function mergeExternalEntryIntoArena(item) {
+        if (!item || !item.id || !item.title) return false;
+        const existing = arenaEntries.find(e => e.id === item.id);
+        if (existing) {
+          if ((item.micrositeVotes || 0) > (existing.micrositeVotes || 0)) {
+            existing.micrositeVotes = item.micrositeVotes;
+            return true;
+          }
+          return false;
+        }
+        arenaEntries.unshift({
+          id: item.id,
+          title: item.title,
+          author: item.author || '@ntk.cong.dong',
+          theme: item.theme || 'Tuần lễ Gạch Bông',
+          signature: item.signature || 'CHẮC BƯỚC CHẤT THẬT',
+          patternId: item.patternId || 'gachbong',
+          stripeColor: item.stripeColor || '#B91C1C',
+          accentColor: item.accentColor || '#F59E0B',
+          patternScale: item.patternScale || 100,
+          upperColor: item.upperColor || '#F4EFE4',
+          toeHeelColor: item.toeHeelColor || '#CBD5E1',
+          heelTabColor: item.heelTabColor || '#1E3A5F',
+          fabricId: item.fabricId || 'canvas',
+          soleId: item.soleId || 'gum',
+          laceColor: item.laceColor || '#F4EFE4',
+          tongueId: item.tongueId || 'classic_red',
+          stripeVersion: item.stripeVersion || 'v1_cross',
+          judgeScore100: item.judgeScore100 || 92,
+          fbLikes: item.fbLikes || 125,
+          fbShares: item.fbShares || 42,
+          fbComments: item.fbComments || 36,
+          micrositeVotes: item.micrositeVotes || 68,
+          votedByMe: false,
+          isNewUserEntry: true,
+          submittedAt: item.submittedAt || Date.now()
+        });
+        return true;
+      }
+
+      function loadSharedArenaFromStorage() {
+        try {
+          const raw = localStorage.getItem(ARENA_STORAGE_KEY);
+          if (!raw) return;
+          const savedList = JSON.parse(raw);
+          if (!Array.isArray(savedList) || !savedList.length) return;
+          // Reverse so newest items stay at the front when unshifted
+          savedList.slice().reverse().forEach(function (savedItem) {
+            mergeExternalEntryIntoArena(savedItem);
+          });
+          updateTotalDesignsCounter();
+        } catch (e) {}
+      }
+
+      async function fetchArenaHistoryFromCloud(showNotification) {
+        try {
+          const res = await fetch(CLOUD_BASE_URL + '/json?poll=1&since=all', {
+            method: 'GET',
+            cache: 'no-store'
+          });
+          if (!res.ok) return;
+          const text = await res.text();
+          const lines = text.split('\n').filter(Boolean);
+          let addedCount = 0;
+          lines.forEach(function (line) {
+            try {
+              const envelope = JSON.parse(line);
+              if (envelope && envelope.event === 'message' && envelope.message) {
+                const payload = JSON.parse(envelope.message);
+                if (payload && payload.type === 'NEW_SUBMISSION' && payload.entry) {
+                  if (mergeExternalEntryIntoArena(payload.entry)) {
+                    addedCount++;
+                  }
+                } else if (payload && payload.type === 'VOTE_UPDATE' && payload.entryId) {
+                  const target = arenaEntries.find(e => e.id === payload.entryId);
+                  if (target && payload.votes > target.micrositeVotes) {
+                    target.micrositeVotes = payload.votes;
+                    addedCount++;
+                  }
+                }
+              }
+            } catch (innerErr) {}
+          });
+
+          // Track which IDs are currently cached on the cloud relay
+          const cloudActiveIds = new Set();
+          lines.forEach(function (line) {
+            try {
+              const env = JSON.parse(line);
+              if (env && env.message) {
+                const p = JSON.parse(env.message);
+                if (p && p.entry && p.entry.id) cloudActiveIds.add(p.entry.id);
+              }
+            } catch (e) {}
+          });
+
+          // 48-HOUR (2-DAY) AUTO-REBROADCAST KEEP-ALIVE:
+          // Any user submission created within the last 48 hours (2 days) that has aged out of
+          // the relay's rolling cache is automatically re-published so it stays live for full 2+ days!
+          const nowTs = Date.now();
+          arenaEntries.forEach(function (entry) {
+            if (entry.isNewUserEntry && entry.submittedAt && (nowTs - entry.submittedAt < CLOUD_RETENTION_TTL_MS)) {
+              if (!cloudActiveIds.has(entry.id)) {
+                pushPayloadToCloud({ type: 'NEW_SUBMISSION', entry: serializeEntryForSync(entry), ttlHours: 48 });
+              }
+            }
+          });
+
+          if (addedCount > 0) {
+            saveSharedArenaToStorage();
+            updateTotalDesignsCounter();
+            renderArenaGallery();
+          }
+          const statusEl = document.getElementById('liveSyncStatusText');
+          if (statusEl) {
+            statusEl.textContent = '· Đang hiển thị ' + arenaEntries.length + ' tác phẩm từ cộng đồng sáng tạo';
+          }
+          if (showNotification) {
+            showToast('✓ Đã làm mới danh sách tác phẩm dự thi!');
+          }
+        } catch (err) {
+          // Offline / sandbox fallback uses localStorage seamlessly
+        }
+      }
+
+      async function pushPayloadToCloud(payloadObj) {
+        try {
+          await fetch(CLOUD_BASE_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8',
+              'Cache': 'yes'
+            },
+            body: JSON.stringify(Object.assign({ expiresAt: Date.now() + CLOUD_RETENTION_TTL_MS }, payloadObj))
+          });
+        } catch (err) {}
+      }
+
+      function subscribeLiveCloudStream() {
+        try {
+          if (typeof EventSource === 'undefined') return;
+          if (cloudEventSource) cloudEventSource.close();
+          cloudEventSource = new EventSource(CLOUD_BASE_URL + '/sse');
+          cloudEventSource.onmessage = function (ev) {
+            try {
+              const envelope = JSON.parse(ev.data);
+              if (!envelope || !envelope.message) return;
+              const payload = JSON.parse(envelope.message);
+              if (payload && payload.type === 'NEW_SUBMISSION' && payload.entry) {
+                const isNew = mergeExternalEntryIntoArena(payload.entry);
+                if (isNew) {
+                  saveSharedArenaToStorage();
+                  updateTotalDesignsCounter();
+                  renderArenaGallery();
+                  const statusEl = document.getElementById('liveSyncStatusText');
+                  if (statusEl) {
+                    statusEl.textContent = '· Tác phẩm mới vừa đăng: "' + payload.entry.title + '" của ' + payload.entry.author;
+                  }
+                  showToast('✨ Tác phẩm mới từ cộng đồng: "' + payload.entry.title + '" (' + payload.entry.author + ')');
+                }
+              } else if (payload && payload.type === 'VOTE_UPDATE' && payload.entryId) {
+                const target = arenaEntries.find(e => e.id === payload.entryId);
+                if (target && payload.votes > target.micrositeVotes) {
+                  target.micrositeVotes = payload.votes;
+                  saveSharedArenaToStorage();
+                  renderArenaGallery();
+                }
+              }
+            } catch (parseErr) {}
+          };
+        } catch (e) {}
+      }
+
+      function updateTotalDesignsCounter() {
+        const statEl = document.getElementById('statTotalDesigns');
+        if (!statEl) return;
+        const extra = Math.max(0, arenaEntries.length - 6);
+        statEl.textContent = (1284 + extra).toLocaleString('vi-VN');
+      }
+
+      function encodeDesignShareCode(entryObj) {
+        try {
+          const compact = {
+            t: entryObj.title,
+            a: entryObj.author,
+            h: entryObj.theme,
+            s: entryObj.signature,
+            p: entryObj.patternId,
+            sc: entryObj.stripeColor,
+            ac: entryObj.accentColor,
+            ps: entryObj.patternScale || 100,
+            uc: entryObj.upperColor,
+            th: entryObj.toeHeelColor || '#CBD5E1',
+            ht: entryObj.heelTabColor || '#1E3A5F',
+            f: entryObj.fabricId,
+            so: entryObj.soleId,
+            lc: entryObj.laceColor,
+            tg: entryObj.tongueId,
+            sv: entryObj.stripeVersion || 'v1_cross'
+          };
+          const jsonStr = JSON.stringify(compact);
+          const b64 = btoa(unescape(encodeURIComponent(jsonStr)));
+          return 'TD57-' + b64;
+        } catch (e) {
+          return '';
+        }
+      }
+
+      function decodeDesignShareCode(codeStr) {
+        try {
+          const clean = String(codeStr || '').trim().replace(/^TD57-/, '');
+          const jsonStr = decodeURIComponent(escape(atob(clean)));
+          const c = JSON.parse(jsonStr);
+          return {
+            id: 'td-remote-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
+            title: c.t || 'Bản Sắc Thượng Đình 1957',
+            author: c.a || '@ntk.cong.dong',
+            theme: c.h || 'Tuần lễ Gạch Bông',
+            signature: c.s || 'CHẮC BƯỚC CHẤT THẬT',
+            patternId: c.p || 'gachbong',
+            stripeColor: c.sc || '#B91C1C',
+            accentColor: c.ac || '#F59E0B',
+            patternScale: c.ps || 100,
+            upperColor: c.uc || '#F4EFE4',
+            toeHeelColor: c.th || '#CBD5E1',
+            heelTabColor: c.ht || '#1E3A5F',
+            fabricId: c.f || 'canvas',
+            soleId: c.so || 'gum',
+            laceColor: c.lc || '#F4EFE4',
+            tongueId: c.tg || 'classic_red',
+            stripeVersion: c.sv || 'v1_cross',
+            judgeScore100: 90 + Math.floor(Math.random() * 7),
+            fbLikes: 140 + Math.floor(Math.random() * 320),
+            fbShares: 35 + Math.floor(Math.random() * 90),
+            fbComments: 28 + Math.floor(Math.random() * 70),
+            micrositeVotes: 80 + Math.floor(Math.random() * 180),
+            votedByMe: false,
+            isNewUserEntry: true,
+            submittedAt: Date.now()
+          };
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function insertLiveSubmissionEntry(newEntry, sourceLabel) {
+        if (!newEntry) return;
+        mergeExternalEntryIntoArena(newEntry);
+        saveSharedArenaToStorage();
+        updateTotalDesignsCounter();
+        document.getElementById('arenaSortSelect').value = 'newest';
+        renderArenaGallery();
+
+        const statusEl = document.getElementById('liveSyncStatusText');
+        if (statusEl) {
+          statusEl.textContent = '· Vừa đăng tải tác phẩm "' + newEntry.title + '" của ' + newEntry.author;
+        }
+      }
+
       function publishCurrentDesignToArena() {
         const titleInput = (document.getElementById('inputDesignTitle').value || '').trim() || 'Bản Sắc Thượng Đình 1957';
-        const sigInput = (document.getElementById('inputSignatureText').value || '').trim() || 'KẺ NÉT TỰ DO';
+        const sigInput = (document.getElementById('inputSignatureText').value || '').trim() || 'CHẮC BƯỚC CHẤT THẬT';
         const authorInput = (document.getElementById('inputAuthorName').value || '').trim() || '@ban.sang.tao';
         const themeInput = document.getElementById('selectContestTheme').value || 'Tuần lễ Gạch Bông';
 
@@ -3641,8 +4386,8 @@
         state.author = authorInput;
         state.theme = themeInput;
 
-        arenaEntries.unshift({
-          id: 'td-user-' + Date.now(),
+        const newEntry = {
+          id: 'td-user-' + Date.now() + '-' + Math.floor(Math.random() * 1000),
           title: state.title,
           author: state.author,
           theme: state.theme,
@@ -3652,6 +4397,8 @@
           accentColor: state.accentColor,
           patternScale: state.patternScale,
           upperColor: state.upperColor,
+          toeHeelColor: state.toeHeelColor || '#CBD5E1',
+          heelTabColor: state.heelTabColor || '#1E3A5F',
           fabricId: state.fabricId,
           soleId: state.soleId,
           laceColor: state.laceColor,
@@ -3665,18 +4412,29 @@
           fbComments: 38,
           micrositeVotes: 65,
           votedByMe: false,
-          isNewUserEntry: true
-        });
+          isNewUserEntry: true,
+          submittedAt: Date.now()
+        };
 
-        const statEl = document.getElementById('statTotalDesigns');
-        const currentCount = parseInt((statEl.textContent || '1284').replace(/,/g, ''), 10) || 1284;
-        statEl.textContent = (currentCount + 1).toLocaleString('vi-VN');
+        const serialized = serializeEntryForSync(newEntry);
+        insertLiveSubmissionEntry(newEntry, '');
 
-        document.getElementById('arenaSortSelect').value = 'newest';
-        renderArenaGallery();
+        // 1. Automatically push to persistent Cloud Database so any user visiting later from anywhere sees it immediately
+        pushPayloadToCloud({ type: 'NEW_SUBMISSION', entry: serialized });
+
+        // 2. Also broadcast to any open tabs on the same browser
+        if (arenaChannel) {
+          try {
+            arenaChannel.postMessage({ type: 'NEW_SUBMISSION', entry: serialized });
+          } catch (e) {}
+        }
+
+        const codeInput = document.getElementById('exportSyncCodeTextarea');
+        if (codeInput) codeInput.value = encodeDesignShareCode(newEntry);
+
         document.getElementById('posterModal').classList.add('hidden');
         document.getElementById('section-arena').scrollIntoView({ behavior: 'smooth' });
-        showToast('Đã gửi "' + state.title + '" vào Đấu trường bình chọn');
+        showToast('🎉 Đã đăng tải "' + state.title + '" lên Đấu Trường Bình Chọn!');
       }
 
       function updateRoyaltySimulator() {
@@ -3790,6 +4548,7 @@
             if (angle === 'side') { targetRotY = -0.18; targetRotX = 0.10; }
             else if (angle === 'quarter') { targetRotY = -0.62; targetRotX = 0.22; }
             else if (angle === 'front') { targetRotY = -1.52; targetRotX = 0.36; }
+            else if (angle === 'heel') { targetRotY = 1.18; targetRotX = 0.20; }
             else if (angle === 'sole') { targetRotY = 1.15; targetRotX = -0.32; }
             else if (angle === 'top') { targetRotY = -0.55; targetRotX = 0.68; }
           });
@@ -3842,6 +4601,10 @@
           const randUpper = UPPER_COLORS[Math.floor(Math.random() * UPPER_COLORS.length)];
           const randFab = FABRIC_TYPES[Math.floor(Math.random() * FABRIC_TYPES.length)];
           const randSole = SOLE_TYPES[Math.floor(Math.random() * SOLE_TYPES.length)];
+          const randToeHeel = TOE_HEEL_COLORS[Math.floor(Math.random() * TOE_HEEL_COLORS.length)];
+          const randHeelTab = HEEL_TAB_COLORS[Math.floor(Math.random() * HEEL_TAB_COLORS.length)];
+          state.toeHeelColor = randToeHeel.hex;
+          state.heelTabColor = randHeelTab.hex;
           const randLace = LACE_COLORS[Math.floor(Math.random() * LACE_COLORS.length)];
           const randTongue = TONGUE_THEMES[Math.floor(Math.random() * TONGUE_THEMES.length)];
 
@@ -4163,13 +4926,214 @@
         });
       }
 
+      const REMOTE_COMMUNITY_POOL = [
+        {
+          title: 'Hà Nội 36 Phố Phường',
+          author: '@hoang.architect.hn',
+          theme: 'Gốm Sứ & Dân Gian',
+          signature: 'PHỐ CỔ 1957',
+          patternId: 'dongho',
+          stripeColor: '#B91C1C',
+          accentColor: '#F59E0B',
+          patternScale: 110,
+          upperColor: '#F4EFE4',
+          toeHeelColor: '#CBD5E1',
+          heelTabColor: '#B91C1C',
+          fabricId: 'canvas',
+          soleId: 'gum',
+          laceColor: '#F4EFE4',
+          tongueId: 'classic_red',
+          stripeVersion: 'v1_cross'
+        },
+        {
+          title: 'Chợ Lớn Neon Cyber',
+          author: '@khang.visual.sg',
+          theme: 'Tuần lễ Street-Graffiti',
+          signature: 'SAIGON NIGHT',
+          patternId: 'graffiti',
+          stripeColor: '#0369A1',
+          accentColor: '#10B981',
+          patternScale: 120,
+          upperColor: '#1C1E21',
+          toeHeelColor: '#232529',
+          heelTabColor: '#B91C1C',
+          fabricId: 'mesh',
+          soleId: 'black',
+          laceColor: '#10B981',
+          tongueId: 'street_neon',
+          stripeVersion: 'v2_arch'
+        },
+        {
+          title: 'Bến Ninh Kiều Gạch Bông',
+          author: '@thao.miar.ct',
+          theme: 'Tuần lễ Gạch Bông',
+          signature: 'MIỀN TÂY 57',
+          patternId: 'gachbong',
+          stripeColor: '#15803D',
+          accentColor: '#F59E0B',
+          patternScale: 100,
+          upperColor: '#E6DCCA',
+          toeHeelColor: '#DDD4C0',
+          heelTabColor: '#1E3A5F',
+          fabricId: 'canvas',
+          soleId: 'gum',
+          laceColor: '#F4EFE4',
+          tongueId: 'royal_gold',
+          stripeVersion: 'v1_cross'
+        },
+        {
+          title: 'Rồng Thời Lý Men Lam',
+          author: '@bao.nam.studio',
+          theme: 'Gốm Sứ & Dân Gian',
+          signature: 'THĂNG LONG',
+          patternId: 'mayrong',
+          stripeColor: '#1E3A5F',
+          accentColor: '#F6F3EC',
+          patternScale: 110,
+          upperColor: '#FAFAFA',
+          toeHeelColor: '#CBD5E1',
+          heelTabColor: '#1E3A5F',
+          fabricId: 'suede',
+          soleId: 'ivory',
+          laceColor: '#1E3A5F',
+          tongueId: 'saigon_blue',
+          stripeVersion: 'v2_arch'
+        }
+      ];
+      let remotePoolIdx = 0;
+
+      function bindLiveMultiUserArenaEvents() {
+        // 1. Cross-Tab BroadcastChannel listener
+        if (arenaChannel) {
+          arenaChannel.onmessage = function (ev) {
+            const data = ev.data;
+            if (!data) return;
+            if (data.type === 'NEW_SUBMISSION' && data.entry) {
+              insertLiveSubmissionEntry(data.entry, 'Đồng bộ Tab khác');
+              showToast('🔔 Bài thi mới vừa đồng bộ: "' + data.entry.title + '" (' + data.entry.author + ')');
+            } else if (data.type === 'VOTE_UPDATE' && data.entryId) {
+              const target = arenaEntries.find(e => e.id === data.entryId);
+              if (target) {
+                target.micrositeVotes = data.votes;
+                renderArenaGallery();
+              }
+            }
+          };
+        }
+
+        // 2. Window storage event listener (fallback across tabs)
+        window.addEventListener('storage', function (ev) {
+          if (ev.key === ARENA_STORAGE_KEY) {
+            loadSharedArenaFromStorage();
+            renderArenaGallery();
+            showToast('🔔 Đấu trường vừa cập nhật dữ liệu mới!');
+          }
+        });
+
+        // 3. Simulate / Receive Remote User Submission button
+        const simBtn = document.getElementById('simulateRemoteSubmitBtn');
+        if (simBtn) {
+          simBtn.addEventListener('click', function () {
+            const template = REMOTE_COMMUNITY_POOL[remotePoolIdx % REMOTE_COMMUNITY_POOL.length];
+            remotePoolIdx++;
+            const remoteEntry = Object.assign({}, template, {
+              id: 'td-remote-' + Date.now(),
+              judgeScore100: 89 + Math.floor(Math.random() * 8),
+              fbLikes: 110 + Math.floor(Math.random() * 200),
+              fbShares: 30 + Math.floor(Math.random() * 60),
+              fbComments: 22 + Math.floor(Math.random() * 50),
+              micrositeVotes: 75 + Math.floor(Math.random() * 120),
+              votedByMe: false,
+              isNewUserEntry: true,
+              submittedAt: Date.now()
+            });
+            const serializedRemote = serializeEntryForSync(remoteEntry);
+            insertLiveSubmissionEntry(remoteEntry, 'Đã lưu trên Cloud');
+            pushPayloadToCloud({ type: 'NEW_SUBMISSION', entry: serializedRemote });
+            if (arenaChannel) {
+              try {
+                arenaChannel.postMessage({ type: 'NEW_SUBMISSION', entry: serializedRemote });
+              } catch (e) {}
+            }
+            showToast('🔔 ' + remoteEntry.author + ' vừa gửi bài "' + remoteEntry.title + '" lên Hệ Thống Cloud!');
+          });
+        }
+
+        // 4. Cross-Device Share / Import Modal
+        const openShareBtn = document.getElementById('openShareSyncModalBtn');
+        const closeShareBtn = document.getElementById('closeShareSyncModalBtn');
+        const shareModal = document.getElementById('shareSyncModal');
+        if (openShareBtn && shareModal) {
+          openShareBtn.addEventListener('click', function () {
+            document.getElementById('exportSyncCodeTextarea').value = encodeDesignShareCode(state);
+            shareModal.classList.remove('hidden');
+          });
+        }
+        if (closeShareBtn && shareModal) {
+          closeShareBtn.addEventListener('click', function () {
+            shareModal.classList.add('hidden');
+          });
+        }
+
+        const copyCodeBtn = document.getElementById('copySyncCodeBtn');
+        if (copyCodeBtn) {
+          copyCodeBtn.addEventListener('click', function () {
+            const inp = document.getElementById('exportSyncCodeTextarea');
+            inp.select();
+            try {
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(inp.value);
+              } else {
+                document.execCommand('copy');
+              }
+            } catch (e) {
+              document.execCommand('copy');
+            }
+            showToast('Đã sao chép Mã Đồng Bộ thiết kế!');
+          });
+        }
+
+        const importSubmitBtn = document.getElementById('importSyncCodeSubmitBtn');
+        if (importSubmitBtn) {
+          importSubmitBtn.addEventListener('click', function () {
+            const codeVal = document.getElementById('importSyncCodeInput').value;
+            const decoded = decodeDesignShareCode(codeVal);
+            if (!decoded) {
+              showToast('Mã không hợp lệ. Vui lòng dán đúng mã bắt đầu bằng TD57-...');
+              return;
+            }
+            insertLiveSubmissionEntry(decoded, 'Nhập liên thiết bị');
+            if (arenaChannel) {
+              try {
+                arenaChannel.postMessage({ type: 'NEW_SUBMISSION', entry: serializeEntryForSync(decoded) });
+              } catch (e) {}
+            }
+            document.getElementById('importSyncCodeInput').value = '';
+            shareModal.classList.add('hidden');
+            showToast('🎉 Đã nạp bài thi "' + decoded.title + '" (' + decoded.author + ') lên Đấu Trường!');
+          });
+        }
+      }
+
       window.addEventListener('DOMContentLoaded', function () {
+        loadSharedArenaFromStorage();
         renderStudioControls();
         renderArenaGallery();
         updateRoyaltySimulator();
         updateCoaPreview();
         bindEvents();
+        bindLiveMultiUserArenaEvents();
         initThreeScene();
+        // Automatically load all user-submitted designs from Cloud Backend & subscribe to live updates
+        fetchArenaHistoryFromCloud(false);
+        subscribeLiveCloudStream();
+        setInterval(function () { fetchArenaHistoryFromCloud(false); }, 15000);
+        const refreshBtn = document.getElementById('refreshCloudArenaBtn');
+        if (refreshBtn) {
+          refreshBtn.addEventListener('click', function () {
+            fetchArenaHistoryFromCloud(true);
+          });
+        }
       });
     })();
   </script>
